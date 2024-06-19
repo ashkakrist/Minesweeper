@@ -1,3 +1,5 @@
+"""GUI difficulty selection screen"""
+
 import tkinter as tk
 from app import App
 
