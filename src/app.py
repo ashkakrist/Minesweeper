@@ -3,6 +3,7 @@ README MINESWEEPER GUI TKINTER
 SUMMARY
     This code generates the graphical user interface of the minesweeper playfield. 
 DESCRIPTION
+    App (class) - 
 """
 import tkinter as tk
 import engine
@@ -14,7 +15,7 @@ class App(tk.Tk):
         tk.Tk.__init__(self)
         self.title('Minesweeper')
         self.geometry(f'{width}x{height}')
-        self.resizable(False, False)
+        self.resizable(False, False) #Doesn't work with Mac? Some of the columns are outside the window.
         self.board = engine.MineSweeper(rows, cols, mines, safe_radius)
         self.rows = rows
         self.cols = cols
