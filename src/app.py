@@ -1,9 +1,38 @@
 """GUI - maybe rename?
 README MINESWEEPER GUI TKINTER
 SUMMARY
-    This code generates the graphical user interface of the minesweeper playfield. 
+    This code generates the graphical user interface of the minesweeper playfield.
 DESCRIPTION
-    App (class) - 
+    App (class)
+        __init__ (function) - Initialises the class. 
+        win (function) - 
+        loss (function) - 
+        show_popup (function) - 
+        restart (function) - 
+        create_button_grid (function) - 
+        on_left_click (function) - 
+        on_right_click (function) - 
+        update_button_grid (function) - 
+PARAMETERS
+    tk.TK - 
+    self - 
+    width - 
+    height - 
+    rows - 
+    cols - 
+    mines - 
+    safe_radius - 
+    message - 
+    popup - 
+LIMITATIONS
+    1. 
+    2. 
+    ...
+STRUCTURES
+    for loop (create_button_grid) - 
+    for loop (update_button_grid) - 
+OUTPUT
+    button grid?     
 """
 import tkinter as tk
 import engine
