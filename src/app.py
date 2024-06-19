@@ -1,3 +1,4 @@
+"""GUI"""
 import tkinter as tk
 import engine
 import config as cfg
