@@ -10,7 +10,8 @@ import random
 class MineSweeper:
     """
     Mine Sweeper game object;
-    Use the reveal method to specify the row and column index of a tile you want to reveal
+    Use the reveal method to specify the row and column index of a tile you want to reveal;
+    Use the flag method to flag a specified tile, flagged tiles cannot be revealed
     """
 
     def __init__(self, n_rows: int, n_cols: int, n_mines: int, safe_radius):
