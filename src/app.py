@@ -75,7 +75,7 @@ class App(tk.Tk):
         button_frame = tk.Frame(popup)
         button_frame.pack(pady=10)
 
-        exit_button = tk.Button(button_frame, text="Exit", command=self.quit)
+        exit_button = tk.Button(button_frame, text="Exit", command=lambda: self.quit(popup))
         exit_button.pack(side=tk.LEFT, padx=10)
 
         restart_button = tk.Button(button_frame, text="Restart", command=lambda: self.restart(popup))
@@ -86,6 +86,10 @@ class App(tk.Tk):
         self.destroy()
         app = cfg.StartScreen()
         app.mainloop()
+
+    def quit(self, popup):
+        popup.destroy()
+        self.destroy()
 
     def create_button_grid(self, rows, cols):
         for r in range(rows):
