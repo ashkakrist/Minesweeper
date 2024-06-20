@@ -21,6 +21,7 @@ class StartScreen(tk.Tk):
         self.SAFE_RADIUS = 2
         self.new_difficulty_level_window()
         self.OS = tk.IntVar()
+        self.OS.set(3)
         self.choose_OS()
 
 
@@ -31,11 +32,12 @@ class StartScreen(tk.Tk):
         label = tk.Label(self, text="Select operating system:")
         label.pack()
 
-        rad_mac = tk.Radiobutton(self, text="MacOS", variable=self.OS, value=2)
-        rad_mac.pack(padx=20, side=tk.LEFT)
-
         rad_wind = tk.Radiobutton(self, text="Windows", variable=self.OS, value=3)
-        rad_wind.pack(padx=20, side=tk.RIGHT)
+        rad_wind.pack(padx=20, side=tk.LEFT)
+
+        rad_mac = tk.Radiobutton(self, text="MacOS", variable=self.OS, value=2)
+        rad_mac.pack(padx=20, side=tk.RIGHT)
+
 
     def new_difficulty_level_window(self):
         label = tk.Label(self, text="Select difficulty level:")
