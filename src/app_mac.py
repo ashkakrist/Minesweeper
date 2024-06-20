@@ -25,10 +25,11 @@ PARAMETERS
     message - 
     popup - 
 LIMITATIONS
-    1. For the mousepad of a macbook, the button functions are different as for a windows pc
-    or when using a mouse. So to play on a macbook, another function needs to be written which is
-    compatible with a macbook.
-    2. 
+    1. Due to differences between windows and macOS, the code needs to be altered for a
+    mac. In this code the following differences are:
+        - Code for the event when clicking the buttons.
+        - Graphical layout, screenwidth etc.
+    2.
     ...
 STRUCTURES
     for loop (create_button_grid) - 
@@ -90,7 +91,7 @@ class App(tk.Tk):
             for c in range(cols):
                 button = tk.Button(self, text=self.board.board[r][c].__repr__(), width=4, height=2)
                 button.bind('<Button-1>', lambda event, row=r, col=c: self.on_left_click(row, col))
-                button.bind('<Button-3>', lambda event, row=r, col=c: self.on_right_click(row, col))
+                button.bind('<Button-2>', lambda event, row=r, col=c: self.on_right_click(row, col))
                 button.grid(row=r, column=c, padx=1, pady=1, sticky=tk.NSEW)
                 self.buttons[r][c] = button
 
