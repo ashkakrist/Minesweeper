@@ -11,7 +11,7 @@ class StartScreen(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
         self.title('Minesweeper')
-        self.geometry("300x100")
+        self.geometry("300x150")
         self.resizable(False, False)
         self.WIDTH = 700
         self.HEIGHT = 700
@@ -20,6 +20,16 @@ class StartScreen(tk.Tk):
         self.NUMBER_OF_MINES = self.ROWS * self.COLUMNS // 4
         self.SAFE_RADIUS = 2
         self.new_difficulty_level_window()
+        self.choose_OS()
+
+    def choose_OS(self):
+        label = tk.Label(self, text="Select operating system:")
+
+        rad_mac = tk.Radiobutton(self, text="MacOS")
+        rad_mac.pack(padx=20, side=tk.LEFT)
+
+        rad_wind = tk.Radiobutton(self, text="Windows")
+        rad_wind.pack(padx=20, side=tk.RIGHT)
 
     def new_difficulty_level_window(self):
         label = tk.Label(self, text="Select difficulty level:")
