@@ -43,7 +43,7 @@ import config as cfg
 
 
 class App(tk.Tk):
-    def __init__(self, width, height, rows, cols, mines, safe_radius):
+    def __init__(self, width, height, rows, cols, mines, safe_radius, leftclick = 2):
         tk.Tk.__init__(self)
         self.title('Minesweeper')
         self.geometry(f'{width}x{height}')
@@ -52,6 +52,7 @@ class App(tk.Tk):
         self.rows = rows
         self.cols = cols
         self.buttons = [[None for _ in range(cols)] for _ in range(rows)]
+        self.OS = leftclick
 
         self.create_button_grid(rows, cols)
         self.board.on_win += [self.win]
@@ -91,7 +92,7 @@ class App(tk.Tk):
             for c in range(cols):
                 button = tk.Button(self, text=self.board.board[r][c].__repr__(), width=4, height=2)
                 button.bind('<Button-1>', lambda event, row=r, col=c: self.on_left_click(row, col))
-                button.bind('<Button-3>', lambda event, row=r, col=c: self.on_right_click(row, col))
+                button.bind('<Button-%d>' % self.OS, lambda event, row=r, col=c: self.on_right_click(row, col))
                 button.grid(row=r, column=c, padx=1, pady=1, sticky=tk.NSEW)
                 self.buttons[r][c] = button
 
