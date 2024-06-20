@@ -1,7 +1,7 @@
 """GUI difficulty selection screen"""
 
 import tkinter as tk
-from app import App
+from src.app import App
 
 
 class StartScreen(tk.Tk):
@@ -12,7 +12,7 @@ class StartScreen(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
         self.title('Minesweeper')
-        self.geometry("300x150")
+        self.geometry("300x200")
         self.resizable(False, False)
         self.WIDTH = 700
         self.HEIGHT = 700
@@ -21,22 +21,11 @@ class StartScreen(tk.Tk):
         self.NUMBER_OF_MINES = self.ROWS * self.COLUMNS // 4
         self.SAFE_RADIUS = 2
         self.new_difficulty_level_window()
+        self.set_row_col()
         self.OS = tk.IntVar()
         self.OS.set(3)
         self.choose_OS()
 
-    def choose_OS(self):
-        """
-        Selecting operator, standard on windows.
-        """
-        label = tk.Label(self, text="Select operating system:")
-        label.pack()
-
-        rad_wind = tk.Radiobutton(self, text="Windows", variable=self.OS, value=3)
-        rad_wind.pack(padx=20, side=tk.LEFT)
-
-        rad_mac = tk.Radiobutton(self, text="MacOS", variable=self.OS, value=2)
-        rad_mac.pack(padx=20, side=tk.RIGHT)
 
     def new_difficulty_level_window(self):
         label = tk.Label(self, text="Select difficulty level:")
@@ -80,3 +69,32 @@ class StartScreen(tk.Tk):
         app = App(self.WIDTH, self.HEIGHT, self.ROWS, self.COLUMNS, self.ROWS * self.COLUMNS // 3, 1, self.OS.get())
         self.destroy()
         app.mainloop()
+
+    def set_row_col(self):
+        label = tk.Label(self, text="Choose number of:")
+        label.pack()
+
+        entry_frame = tk.Frame(self)
+        entry_frame.pack()
+        lab_col = tk.Label(entry_frame, text="columns:")
+        lab_col.pack(anchor='w')
+        var_col = tk.Entry(entry_frame)
+        var_col.pack(anchor='w')
+
+        lab_row = tk.Label(entry_frame, text="rows:")
+        lab_row.pack(side=tk.LEFT)
+        var_row = tk.Entry(entry_frame)
+        var_row.pack()
+
+    def choose_OS(self):
+        """
+        Selecting operator, standard on windows.
+        """
+        label = tk.Label(self, text="Select operating system:")
+        label.pack()
+
+        rad_wind = tk.Radiobutton(self, text="Windows", variable=self.OS, value=3)
+        rad_wind.pack(padx=20, side=tk.LEFT)
+
+        rad_mac = tk.Radiobutton(self, text="MacOS", variable=self.OS, value=2)
+        rad_mac.pack(padx=20, side=tk.RIGHT)

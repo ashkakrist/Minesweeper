@@ -38,8 +38,8 @@ OUTPUT
     button grid?     
 """
 import tkinter as tk
-import engine
-import config as cfg
+import src.engine as engine
+import src.config as cfg
 
 
 class App(tk.Tk):
