@@ -25,7 +25,9 @@ PARAMETERS
     message - 
     popup - 
 LIMITATIONS
-    1. 
+    1. For the mousepad of a macbook, the button functions are different as for a windows pc
+    or when using a mouse. So to play on a macbook, another function needs to be written which is
+    compatible with a macbook.
     2. 
     ...
 STRUCTURES
