@@ -25,7 +25,9 @@ class StartScreen(tk.Tk):
 
 
     def choose_OS(self):
-        #Selecting operator, standard on windows.
+        """
+        Selecting operator, standard on windows.
+        """
         label = tk.Label(self, text="Select operating system:")
         label.pack()
 
