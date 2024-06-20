@@ -31,10 +31,10 @@ class StartScreen(tk.Tk):
         label = tk.Label(self, text="Select operating system:")
         label.pack()
 
-        rad_mac = tk.Radiobutton(self, text="MacOS", variable=self.OS, value=1)
+        rad_mac = tk.Radiobutton(self, text="MacOS", variable=self.OS, value=2)
         rad_mac.pack(padx=20, side=tk.LEFT)
 
-        rad_wind = tk.Radiobutton(self, text="Windows", variable=self.OS, value=0)
+        rad_wind = tk.Radiobutton(self, text="Windows", variable=self.OS, value=3)
         rad_wind.pack(padx=20, side=tk.RIGHT)
 
     def new_difficulty_level_window(self):
@@ -58,7 +58,7 @@ class StartScreen(tk.Tk):
         Kill starting screen and create new minesweeper gui with settings that are easy
         (low mine count, large safe radius).
         """
-        app = App(self.WIDTH, self.HEIGHT, self.ROWS, self.COLUMNS, self.ROWS * self.COLUMNS // 6, 2)
+        app = App(self.WIDTH, self.HEIGHT, self.ROWS, self.COLUMNS, self.ROWS * self.COLUMNS // 6, 2, self.OS.get())
         self.destroy()
         app.mainloop()
 
@@ -67,7 +67,7 @@ class StartScreen(tk.Tk):
         Kill starting screen and create new minesweeper gui with settings that are medium difficult.
         (medium mine count, large safe radius).
         """
-        app = App(self.WIDTH, self.HEIGHT, self.ROWS, self.COLUMNS, self.ROWS * self.COLUMNS // 4, 2)
+        app = App(self.WIDTH, self.HEIGHT, self.ROWS, self.COLUMNS, self.ROWS * self.COLUMNS // 4, 2, self.OS.get())
         self.destroy()
         app.mainloop()
 
@@ -76,6 +76,6 @@ class StartScreen(tk.Tk):
         Hardest mode
         (High mine count, small safe radius).
         """
-        app = App(self.WIDTH, self.HEIGHT, self.ROWS, self.COLUMNS, self.ROWS * self.COLUMNS // 3, 1)
+        app = App(self.WIDTH, self.HEIGHT, self.ROWS, self.COLUMNS, self.ROWS * self.COLUMNS // 3, 1, self.OS.get())
         self.destroy()
         app.mainloop()
