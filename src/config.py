@@ -8,6 +8,7 @@ class StartScreen(tk.Tk):
     """
     Initialise the start screen.
     """
+
     def __init__(self):
         tk.Tk.__init__(self)
         self.title('Minesweeper')
@@ -23,7 +24,6 @@ class StartScreen(tk.Tk):
         self.OS = tk.IntVar()
         self.OS.set(3)
         self.choose_OS()
-
 
     def choose_OS(self):
         """

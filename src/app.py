@@ -43,16 +43,16 @@ import config as cfg
 
 
 class App(tk.Tk):
-    def __init__(self, width, height, rows, cols, mines, safe_radius, leftclick = 2):
+    def __init__(self, width, height, rows, cols, mines, safe_radius, right_click=2):
         tk.Tk.__init__(self)
         self.title('Minesweeper')
         self.geometry(f'{width}x{height}')
-        self.resizable(False, False) #Doesn't work with Mac? Some of the columns are outside the window.
+        self.resizable(False, False)  # Doesn't work with Mac? Some of the columns are outside the window.
         self.board = engine.MineSweeper(rows, cols, mines, safe_radius)
         self.rows = rows
         self.cols = cols
         self.buttons = [[None for _ in range(cols)] for _ in range(rows)]
-        self.OS = leftclick
+        self.OS = right_click
 
         self.create_button_grid(rows, cols)
         self.board.on_win += [self.win]
