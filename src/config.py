@@ -38,7 +38,6 @@ class StartScreen(tk.Tk):
         rad_mac = tk.Radiobutton(self, text="MacOS", variable=self.OS, value=2)
         rad_mac.pack(padx=20, side=tk.RIGHT)
 
-
     def new_difficulty_level_window(self):
         label = tk.Label(self, text="Select difficulty level:")
         label.pack(pady=10)
