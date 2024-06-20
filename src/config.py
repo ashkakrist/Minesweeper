@@ -71,20 +71,17 @@ class StartScreen(tk.Tk):
         app.mainloop()
 
     def set_row_col(self):
-        label = tk.Label(self, text="Choose number of:")
-        label.pack()
-
         entry_frame = tk.Frame(self)
         entry_frame.pack()
-        lab_col = tk.Label(entry_frame, text="columns:")
-        lab_col.pack(anchor='w')
-        var_col = tk.Entry(entry_frame)
-        var_col.pack(anchor='w')
+        lab_col = tk.Label(entry_frame, text="Number of columns:")
+        lab_col.grid(row=0, column=1)
+        var_col = tk.Entry(entry_frame, width=5)
+        var_col.grid(row=0, column=2)
 
-        lab_row = tk.Label(entry_frame, text="rows:")
-        lab_row.pack(side=tk.LEFT)
-        var_row = tk.Entry(entry_frame)
-        var_row.pack()
+        lab_row = tk.Label(entry_frame, text="Number of rows:")
+        lab_row.grid(row=1, column=1)
+        var_row = tk.Entry(entry_frame, width=5, textvariable=self.ROWS)
+        var_row.grid(row=1, column=2)
 
     def choose_OS(self):
         """
