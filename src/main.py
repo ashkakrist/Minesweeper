@@ -1,5 +1,6 @@
 from config import StartScreen
 
+
 def main():
     app = StartScreen()
     app.mainloop()
@@ -8,6 +9,4 @@ def main():
 if __name__ == '__main__':
     main()
 
-
-"""TEST"""
-#TESTING 2.0
+# TESTING 2.0
