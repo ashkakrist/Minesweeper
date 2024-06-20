@@ -27,6 +27,7 @@ class StartScreen(tk.Tk):
     def choose_OS(self):
         #Selecting operator, standard on windows.
         label = tk.Label(self, text="Select operating system:")
+        label.pack()
 
         rad_mac = tk.Radiobutton(self, text="MacOS", variable=self.OS, value=1)
         rad_mac.pack(padx=20, side=tk.LEFT)
