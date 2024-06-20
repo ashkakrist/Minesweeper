@@ -92,18 +92,18 @@ class App(tk.Tk):
         self.destroy()
 
     def create_button_grid(self, rows, cols):
-        grid_menu = tk.Frame(self)
-        grid_menu.pack(padx=10, pady=10)
+        #grid_menu = tk.Frame(self)
+        #grid_menu.pack(padx=10, pady=10)
 
-        res_but = tk.Button(grid_menu, text="Restart")
-        res_but.pack()
+        #res_but = tk.Button(grid_menu, text="Restart")
+        #res_but.pack()
 
-        grid_frame = tk.Frame(self)
-        grid_frame.pack(padx=10, pady=10)
+        #grid_frame = tk.Frame(self)
+        #grid_frame.pack(padx=10, pady=10)
 
         for r in range(rows):
             for c in range(cols):
-                button = tk.Button(grid_frame, text=self.board.board[r][c].__repr__(), width=4, height=2)
+                button = tk.Button(self, text=self.board.board[r][c].__repr__(), width=4, height=2)
                 button.bind('<Button-1>', lambda event, row=r, col=c: self.on_left_click(row, col))
                 button.bind('<Button-%d>' % self.OS, lambda event, row=r, col=c: self.on_right_click(row, col))
                 button.grid(row=r, column=c, padx=1, pady=1, sticky=tk.NSEW)
