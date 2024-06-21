@@ -42,6 +42,7 @@ import tkinter as tk
 import src.engine as engine
 import src.config as cfg
 
+
 class App(tk.Tk):
     def __init__(self, width, height, rows, cols, mines, safe_radius, right_click=2):
         tk.Tk.__init__(self)
@@ -72,7 +73,6 @@ class App(tk.Tk):
             now = '%02d : %02d' % (self.now//60, self.now%60)
             self.timer.configure(text=now)
             self.timer.after(1000, self.updateClock)
-
 
     def win(self):
         self.ticking = False
@@ -143,6 +143,6 @@ class App(tk.Tk):
                     self.buttons[r][c].grid_remove()
                 if self.board.board[r][c].__repr__() in ['1', '2', '3', '4', '5', '6', '7', '8']:
                     label = tk.Label(self, text=self.board.board[r][c].__repr__(), width=4, height=2, borderwidth=1)
-                    label.grid(row=r+1, column=c, padx=5, pady=5)
+                    label.grid(row=r + 1, column=c, padx=5, pady=5)
                     self.buttons[r][c].grid_remove()
                     self.buttons[r][c] = label
