@@ -59,6 +59,7 @@ class App(tk.Tk):
         self.timer = tk.Label(self, text=" ", font=('Arial', 40))
         self.timer.grid(row=0, column=0, columnspan=self.cols)
         self.now = 0
+        self.ticking = True
         self.updateClock()
 
         self.create_button_grid(rows, cols)
@@ -66,19 +67,20 @@ class App(tk.Tk):
         self.board.on_loss += [self.loss]
 
     def updateClock(self):
-        self.now += 1
-        now = '%02d : %02d' % (self.now//60, self.now%60)
-        self.timer.configure(text=now)
-        self.timer.after(1000, self.updateClock)
+        if self.ticking:
+            self.now += 1
+            now = '%02d : %02d' % (self.now//60, self.now%60)
+            self.timer.configure(text=now)
+            self.timer.after(1000, self.updateClock)
 
 
     def win(self):
+        self.ticking = False
         self.show_popup("You won!")
-        self.timer = self.now
 
     def loss(self):
+        self.ticking = False
         self.show_popup("You lost!")
-        self.timer = self.now
 
     def show_popup(self, message):
         popup = tk.Toplevel(self)
