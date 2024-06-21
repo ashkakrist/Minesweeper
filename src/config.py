@@ -16,12 +16,12 @@ class StartScreen(tk.Tk):
         self.resizable(False, False)
         self.WIDTH = 700
         self.HEIGHT = 700
-        self.ROWS = 15
-        self.COLUMNS = 15
-        self.NUMBER_OF_MINES = self.ROWS * self.COLUMNS // 4
+        self.ROWS = tk.IntVar(value=15)
+        self.COLUMNS = tk.IntVar(value=15)
+        self.set_row_col()
+        self.NUMBER_OF_MINES = int(self.ROWS.get()) * int(self.COLUMNS.get()) // 4
         self.SAFE_RADIUS = 2
         self.new_difficulty_level_window()
-        self.set_row_col()
         self.OS = tk.IntVar()
         self.OS.set(3)
         self.choose_OS()
@@ -47,7 +47,7 @@ class StartScreen(tk.Tk):
         Kill starting screen and create new minesweeper gui with settings that are easy
         (low mine count, large safe radius).
         """
-        app = App(self.WIDTH, self.HEIGHT, self.ROWS, self.COLUMNS, self.ROWS * self.COLUMNS // 6, 2, self.OS.get())
+        app = App(self.WIDTH, self.HEIGHT, int(self.ROWS.get()), int(self.COLUMNS.get()), int(self.ROWS.get()) * int(self.COLUMNS.get()) // 6, 2, self.OS.get())
         self.destroy()
         app.mainloop()
 
@@ -56,7 +56,7 @@ class StartScreen(tk.Tk):
         Kill starting screen and create new minesweeper gui with settings that are medium difficult.
         (medium mine count, large safe radius).
         """
-        app = App(self.WIDTH, self.HEIGHT, self.ROWS, self.COLUMNS, self.ROWS * self.COLUMNS // 4, 2, self.OS.get())
+        app = App(self.WIDTH, self.HEIGHT, int(self.ROWS.get()), int(self.COLUMNS.get()), int(self.ROWS.get()) * int(self.COLUMNS.get()) // 4, 2, self.OS.get())
         self.destroy()
         app.mainloop()
 
@@ -65,7 +65,7 @@ class StartScreen(tk.Tk):
         Hardest mode
         (High mine count, small safe radius).
         """
-        app = App(self.WIDTH, self.HEIGHT, self.ROWS, self.COLUMNS, self.ROWS * self.COLUMNS // 3, 1, self.OS.get())
+        app = App(self.WIDTH, self.HEIGHT, int(self.ROWS.get()), int(self.COLUMNS.get()), int(self.ROWS.get()) * int(self.COLUMNS.get()) // 3, 1, self.OS.get())
         self.destroy()
         app.mainloop()
 
@@ -75,12 +75,18 @@ class StartScreen(tk.Tk):
         lab_col = tk.Label(entry_frame, text="Number of columns:")
         lab_col.grid(row=0, column=1)
         var_col = tk.Entry(entry_frame, width=5)
+        var_col['textvariable'] = self.COLUMNS
+        self.COLUMNS = var_col
         var_col.grid(row=0, column=2)
 
         lab_row = tk.Label(entry_frame, text="Number of rows:")
         lab_row.grid(row=1, column=1)
-        var_row = tk.Entry(entry_frame, width=5, textvariable=self.ROWS)
+        var_row = tk.Entry(entry_frame, width=5)
+        var_row['textvariable'] = self.ROWS
         var_row.grid(row=1, column=2)
+
+    def get_value(self, entry):
+        ent_val = int(entry.get())
 
     def choose_OS(self):
         """
