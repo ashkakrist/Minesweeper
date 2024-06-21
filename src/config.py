@@ -31,7 +31,6 @@ class StartScreen(tk.Tk):
         self.SAFE_RADIUS = 2
         self.new_difficulty_level_window()
 
-
     def choose_OS(self):
         """
         Selecting operator, standard on windows.
@@ -47,7 +46,6 @@ class StartScreen(tk.Tk):
 
         rad_mac = tk.Radiobutton(OS_frame, text="MacOS", variable=self.OS, value=2)
         rad_mac.pack(padx=20, side=tk.RIGHT)
-
 
     def set_playfield(self):
         """
@@ -67,7 +65,6 @@ class StartScreen(tk.Tk):
 
         rad_mac = tk.Radiobutton(play_frame, text="Large", variable=self.playfield, value=16)
         rad_mac.grid(row=1, column=2)
-
 
     def set_row_col(self):
         self.ROWS = self.playfield
@@ -89,32 +86,32 @@ class StartScreen(tk.Tk):
         hard_button = tk.Button(button_frame, text="Hard", command=self.hard)
         hard_button.grid(row=1, column=2)
 
-
     def easy(self):
         """
         Kill starting screen and create new minesweeper gui with settings that are easy
         (low mine count, large safe radius).
         """
-        app = App(self.WIDTH, self.HEIGHT, int(self.ROWS.get()), int(self.COLUMNS.get()), int(self.ROWS.get()) * int(self.COLUMNS.get()) // 6, 2, self.OS.get())
+        app = App(self.WIDTH, self.HEIGHT, int(self.ROWS.get()), int(self.COLUMNS.get()),
+                  int(self.ROWS.get()) * int(self.COLUMNS.get()) // 6, 2, self.OS.get())
         self.destroy()
         app.mainloop()
-
 
     def normal(self):
         """
         Kill starting screen and create new minesweeper gui with settings that are medium difficult.
         (medium mine count, large safe radius).
         """
-        app = App(self.WIDTH, self.HEIGHT, int(self.ROWS.get()), int(self.COLUMNS.get()), int(self.ROWS.get()) * int(self.COLUMNS.get()) // 4, 2, self.OS.get())
+        app = App(self.WIDTH, self.HEIGHT, int(self.ROWS.get()), int(self.COLUMNS.get()),
+                  int(self.ROWS.get()) * int(self.COLUMNS.get()) // 4, 2, self.OS.get())
         self.destroy()
         app.mainloop()
-
 
     def hard(self):
         """
         Hardest mode
         (High mine count, small safe radius).
         """
-        app = App(self.WIDTH, self.HEIGHT, int(self.ROWS.get()), int(self.COLUMNS.get()), int(self.ROWS.get()) * int(self.COLUMNS.get()) // 3, 1, self.OS.get())
+        app = App(self.WIDTH, self.HEIGHT, int(self.ROWS.get()), int(self.COLUMNS.get()),
+                  int(self.ROWS.get()) * int(self.COLUMNS.get()) // 2, 1, self.OS.get())
         self.destroy()
         app.mainloop()
