@@ -50,11 +50,9 @@ import src.config as cfg
 
 
 class App(tk.Tk):
-    def __init__(self, width, height, rows, cols, mines, safe_radius, right_click=2):
+    def __init__(self, rows, cols, mines, safe_radius, right_click=2):
         tk.Tk.__init__(self)
         self.title('Minesweeper')
-
-        #self.geometry(f'{width}x{height}')
         self.resizable(False, False)  # Doesn't work with Mac? Some of the columns are outside the window.
         self.board = engine.MineSweeper(rows, cols, mines, safe_radius)
         self.rows = rows
