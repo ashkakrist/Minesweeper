@@ -1,8 +1,9 @@
 """
 README - GUI game setup starting screen:
-A class which generates a pop-up at the start of the game,
-which allows the player to adjust the OS version, the size
-of the playfield, and the difficulty of the game.
+A class which generates a pop-up at the start of the game, which allows
+the player to adjust the OS version, the size of the playfield, and the
+difficulty of the game. The settings are used for the final creation of
+the board.
 
 
 ADDITIONAL PACKAGES:
@@ -11,13 +12,17 @@ ADDITIONAL PACKAGES:
 
 StartScreen (class):
     DESCRIPTION:
-    The StartScreen creates the popup at the start of the
-    game in which the player can adjust the OS version, the
-    size of the playfield, and the difficulty of the game.
+    The StartScreen creates the popup at the start of the game in which
+    the player can adjust the OS version, the size of the playfield, and
+    the difficulty of the game.
 
         __init__ (function) - Initialises the class attributes.
-        choose_OS (function) -
-        set_playfield (function) -
+        choose_OS (function) - Makes radio buttons which allows the player
+            to choose between a MacOS or Windows version. The function
+            changes the attribute of the class.
+        set_playfield (function) - Makes radio buttons which allows the
+            player to choose the size of the playfield. The selection
+            changes the attributes of the class.
         set_row_col (function) -
         new_difficulty_level_window -
         easy (function) -
