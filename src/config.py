@@ -42,6 +42,15 @@ class StartScreen(tk.Tk):
     def __init__(self):
         """
         Initialises the class attributes.
+            self.title, self.geometry, and self.resizable assign some
+            basic functions to the game setup starting screen.
+
+            self.ROWS and self.COLUMNS is the attributes that contains the
+            value for the size of the board. The initial setting is 13 for both, which is the
+            size for the medium playing field.
+
+            self.OS contains the value for the OS version. The initial
+            setting is
         """
         tk.Tk.__init__(self)
         self.title('Minesweeper')
