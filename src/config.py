@@ -1,4 +1,44 @@
-"""GUI difficulty selection screen"""
+"""
+README - GUI game setup starting screen:
+A class which generates a pop-up at the start of the game,
+which allows the player to adjust the OS version, the size
+of the playfield, and the difficulty of the game.
+
+
+ADDITIONAL PACKAGES:
+    tkinter - a python library used to create the GUI.
+
+
+StartScreen (class):
+    DESCRIPTION:
+    The StartScreen creates the popup at the start of the
+    game in which the player can adjust the OS version, the
+    size of the playfield, and the difficulty of the game.
+
+        __init__ (function) - Initialises the class attributes.
+        choose_OS (function) -
+        set_playfield (function) -
+        set_row_col (function) -
+        new_difficulty_level_window -
+        easy (function) -
+        normal (function) -
+        hard (function) -
+
+    PARAMETERS:
+        tk.TK -
+
+    LIMITATIONS:
+        1.
+        2.
+        ...
+
+    STRUCTURES:
+        No structures used.
+
+    OUTPUT:
+
+
+"""
 
 import tkinter as tk
 from src.app import App
@@ -23,14 +63,13 @@ class StartScreen(tk.Tk):
         self.OS.set(3)
         self.choose_OS()
 
-        self.playfield = tk.IntVar(value=15)
+        self.playfield = tk.IntVar(value=13)
         self.set_playfield()
         self.set_row_col()
 
         self.NUMBER_OF_MINES = int(self.ROWS.get()) * int(self.COLUMNS.get()) // 4
         self.SAFE_RADIUS = 2
         self.new_difficulty_level_window()
-
 
     def choose_OS(self):
         """
@@ -48,7 +87,6 @@ class StartScreen(tk.Tk):
         rad_mac = tk.Radiobutton(OS_frame, text="MacOS", variable=self.OS, value=2)
         rad_mac.pack(padx=20, side=tk.RIGHT)
 
-
     def set_playfield(self):
         """
         Selecting small(10x10), medium(15x15) or large(20x20) playingfield.
@@ -62,12 +100,11 @@ class StartScreen(tk.Tk):
         rad_wind = tk.Radiobutton(play_frame, text="Small", variable=self.playfield, value=10)
         rad_wind.grid(row=1, column=0)
 
-        rad_mac = tk.Radiobutton(play_frame, text="Medium", variable=self.playfield, value=15)
+        rad_mac = tk.Radiobutton(play_frame, text="Medium", variable=self.playfield, value=13)
         rad_mac.grid(row=1, column=1)
 
-        rad_mac = tk.Radiobutton(play_frame, text="Large", variable=self.playfield, value=20)
+        rad_mac = tk.Radiobutton(play_frame, text="Large", variable=self.playfield, value=16)
         rad_mac.grid(row=1, column=2)
-
 
     def set_row_col(self):
         self.ROWS = self.playfield
@@ -89,32 +126,32 @@ class StartScreen(tk.Tk):
         hard_button = tk.Button(button_frame, text="Hard", command=self.hard)
         hard_button.grid(row=1, column=2)
 
-
     def easy(self):
         """
         Kill starting screen and create new minesweeper gui with settings that are easy
         (low mine count, large safe radius).
         """
-        app = App(self.WIDTH, self.HEIGHT, int(self.ROWS.get()), int(self.COLUMNS.get()), int(self.ROWS.get()) * int(self.COLUMNS.get()) // 6, 2, self.OS.get())
+        app = App(self.WIDTH, self.HEIGHT, int(self.ROWS.get()), int(self.COLUMNS.get()),
+                  int(self.ROWS.get()) * int(self.COLUMNS.get()) // 6, 2, self.OS.get())
         self.destroy()
         app.mainloop()
-
 
     def normal(self):
         """
         Kill starting screen and create new minesweeper gui with settings that are medium difficult.
         (medium mine count, large safe radius).
         """
-        app = App(self.WIDTH, self.HEIGHT, int(self.ROWS.get()), int(self.COLUMNS.get()), int(self.ROWS.get()) * int(self.COLUMNS.get()) // 4, 2, self.OS.get())
+        app = App(self.WIDTH, self.HEIGHT, int(self.ROWS.get()), int(self.COLUMNS.get()),
+                  int(self.ROWS.get()) * int(self.COLUMNS.get()) // 4, 2, self.OS.get())
         self.destroy()
         app.mainloop()
-
 
     def hard(self):
         """
         Hardest mode
         (High mine count, small safe radius).
         """
-        app = App(self.WIDTH, self.HEIGHT, int(self.ROWS.get()), int(self.COLUMNS.get()), int(self.ROWS.get()) * int(self.COLUMNS.get()) // 3, 1, self.OS.get())
+        app = App(self.WIDTH, self.HEIGHT, int(self.ROWS.get()), int(self.COLUMNS.get()),
+                  int(self.ROWS.get()) * int(self.COLUMNS.get()) // 2, 1, self.OS.get())
         self.destroy()
         app.mainloop()
