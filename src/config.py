@@ -51,7 +51,6 @@ class StartScreen(tk.Tk):
         self.COLUMNS = tk.IntVar()
 
         self.OS = tk.IntVar(value=3)
-        self.OS.set(3)
         self.choose_OS()
 
         self.playfield = tk.IntVar(value=13)
