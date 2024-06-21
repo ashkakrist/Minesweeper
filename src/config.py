@@ -47,8 +47,6 @@ class StartScreen(tk.Tk):
         self.title('Minesweeper')
         self.geometry("300x225")
         self.resizable(False, False)
-        self.WIDTH = 700
-        self.HEIGHT = 700
         self.ROWS = tk.IntVar()
         self.COLUMNS = tk.IntVar()
 
@@ -140,9 +138,7 @@ class StartScreen(tk.Tk):
         killed and a new minesweeper GUI is generated on easy settings
         (low mine count, large safe radius).
         """
-        app = App(self.WIDTH,
-                  self.HEIGHT,
-                  int(self.ROWS.get()),
+        app = App(int(self.ROWS.get()),
                   int(self.COLUMNS.get()),
                   int(self.ROWS.get()) * int(self.COLUMNS.get()) // 6,
                   2,
@@ -157,9 +153,7 @@ class StartScreen(tk.Tk):
         killed and a new minesweeper GUI is generated on normal settings
         (medium mine count, large safe radius).
         """
-        app = App(self.WIDTH,
-                  self.HEIGHT,
-                  int(self.ROWS.get()),
+        app = App(int(self.ROWS.get()),
                   int(self.COLUMNS.get()),
                   int(self.ROWS.get()) * int(self.COLUMNS.get()) // 4,
                   2,
@@ -174,9 +168,7 @@ class StartScreen(tk.Tk):
         killed and a new minesweeper GUI is generated on hard settings
         (high mine count, small safe radius).
         """
-        app = App(self.WIDTH,
-                  self.HEIGHT,
-                  int(self.ROWS.get()),
+        app = App(int(self.ROWS.get()),
                   int(self.COLUMNS.get()),
                   int(self.ROWS.get()) * int(self.COLUMNS.get()) // 2,
                   1,
