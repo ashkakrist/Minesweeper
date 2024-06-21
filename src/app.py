@@ -6,14 +6,18 @@ SUMMARY
 DESCRIPTION
     App (class)
         __init__ (function) - Initialises the class. 
-        win (function) - Shows a pop up when the player has won the game.
-        loss (function) - Shows a pop up when the player has lost the game
-        show_popup (function) - 
+        win (function) - calls function show_popup with a winning message.
+        loss (function) - calls function show_popup with a losing message
+        show_popup (function) - creates a pop up with a label showing the message: "you won" or "you lost"
+                                and two buttons: restart and quit. These buttons call the functions with the same name.
+        restart (function) -
+        quit (function) -
         restart (function) - 
         create_button_grid (function) - 
         on_left_click (function) - 
         on_right_click (function) - 
-        update_button_grid (function) - 
+        update_button_grid (function) -
+
 PARAMETERS
     tk.TK - 
     self - 
@@ -24,7 +28,8 @@ PARAMETERS
     mines - 
     safe_radius - 
     message - 
-    popup - 
+    popup -
+
 LIMITATIONS
     1. Due to differences between windows and macOS, the code needs to be altered for a
     mac. In this code the following differences are:
@@ -34,9 +39,10 @@ LIMITATIONS
     ...
 STRUCTURES
     for loop (create_button_grid) - 
-    for loop (update_button_grid) - 
+    for loop (update_button_grid) -
+
 OUTPUT
-    button grid?     
+    GUI on which the game can be played.
 """
 import tkinter as tk
 import src.engine as engine
@@ -58,14 +64,28 @@ class App(tk.Tk):
 
         # label for timer
         self.timer = tk.Label(self, text=" ", font=('Arial', 40))
-        self.timer.grid(row=0, column=0, columnspan=self.cols)
+        self.timer.grid(row=0, column=2, columnspan=self.cols)
         self.now = 0
         self.ticking = True
         self.updateClock()
 
+        #label for number of flags
+        self.flag_lbl = tk.Label(self, text= '🚩', font=('Arial', 40))
+        self.flag_lbl.grid(row=0, column=0)
+
+        self.n_flags_lbl = tk.Label(self, text=self.board.n_mines, font=('Arial', 30))
+        self.n_flags_lbl.grid(row=0, column=1)
+
         self.create_button_grid(rows, cols)
         self.board.on_win += [self.win]
         self.board.on_loss += [self.loss]
+
+    def update_n_flags(self):
+        count = self.board.n_mines
+        for tile in self.board:
+            if tile.flagged:
+                count -= 1
+        self.n_flags_lbl['text'] = count
 
     def updateClock(self):
         if self.ticking:
@@ -134,6 +154,7 @@ class App(tk.Tk):
     def on_right_click(self, row, col):
         self.board.flag(row, col)
         self.update_button_grid()
+        self.update_n_flags()
 
     def update_button_grid(self):
         for r in range(self.rows):
