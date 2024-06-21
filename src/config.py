@@ -26,7 +26,6 @@ class StartScreen(tk.Tk):
         self.OS.set(3)
         self.choose_OS()
 
-
     def new_difficulty_level_window(self):
         label = tk.Label(self, text="Select difficulty level:")
         label.pack(pady=10)
