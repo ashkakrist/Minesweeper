@@ -18,7 +18,7 @@ StartScreen (class):
 
         __init__ (function) - Initialises the class attributes.
         choose_OS (function) - Makes radio buttons which allows the player
-            to choose between a MacOS or Windows version. The function
+            to choose between a macOS or Windows version. The function
             changes the attribute of the class.
         set_playfield (function) - Makes radio buttons which allows the
             player to choose the size of the playfield (small/medium/large).
@@ -29,15 +29,15 @@ StartScreen (class):
             set_playfield function.
         new_difficulty_level_window - Creates the buttons with which the
             player can set the difficulty for the game (easy/normal/hard).
-            Clicking the button initializes the creation of the board
+            Clicking the button initialises the creation of the board
             based on the settings the player selected.
-        easy (function) - Initialized when the player presses the easy
+        easy (function) - Initialised when the player presses the easy
             button generated in the new_difficulty_level_window function.
             An easy game is started.
-        normal (function) - Initialized when the player presses the normal
+        normal (function) - Initialised when the player presses the normal
             button generated in the new_difficulty_level_window function.
             A normal game is started.
-        hard (function) - Initialized when the player presses the hard
+        hard (function) - Initialised when the player presses the hard
             button generated in the new_difficulty_level_window function.
             A hard game is started.
 
@@ -46,7 +46,7 @@ StartScreen (class):
 
     LIMITATIONS:
         1. Other OS are not represented. We do not know how the GUI looks
-            in other OS than MacOS and Windows. The selection has to be
+            in other OS than macOS and Windows. The selection has to be
             done manually and is not automatically detected.
         2.
         ...
