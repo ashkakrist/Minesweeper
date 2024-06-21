@@ -23,7 +23,7 @@ class StartScreen(tk.Tk):
         self.OS.set(3)
         self.choose_OS()
 
-        self.playfield = tk.IntVar(value=15)
+        self.playfield = tk.IntVar(value=13)
         self.set_playfield()
         self.set_row_col()
 
@@ -62,10 +62,10 @@ class StartScreen(tk.Tk):
         rad_wind = tk.Radiobutton(play_frame, text="Small", variable=self.playfield, value=10)
         rad_wind.grid(row=1, column=0)
 
-        rad_mac = tk.Radiobutton(play_frame, text="Medium", variable=self.playfield, value=15)
+        rad_mac = tk.Radiobutton(play_frame, text="Medium", variable=self.playfield, value=13)
         rad_mac.grid(row=1, column=1)
 
-        rad_mac = tk.Radiobutton(play_frame, text="Large", variable=self.playfield, value=20)
+        rad_mac = tk.Radiobutton(play_frame, text="Large", variable=self.playfield, value=16)
         rad_mac.grid(row=1, column=2)
 
 
