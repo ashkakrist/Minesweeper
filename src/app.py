@@ -74,9 +74,11 @@ class App(tk.Tk):
 
     def win(self):
         self.show_popup("You won!")
+        self.timer = self.now
 
     def loss(self):
         self.show_popup("You lost!")
+        self.timer = self.now
 
     def show_popup(self, message):
         popup = tk.Toplevel(self)
