@@ -1,11 +1,11 @@
 """
 README:
 This script contains two object class definitions for playing the Mine Sweeper game.
-The two classes are MineSweeper, which is the whole game, and Tile, which make up the board of the game
+The two classes are MineSweeper, which is the whole game, and Tile, which make up the board of the game.
 
 MineSweeper:
 DESCRIPTION:
-The MineSweeper class contains the logic behind the Mine Sweeper game
+The MineSweeper class contains the logic behind the Mine Sweeper game.
 
 PARAMETERS:
 - n_rows (int): the vertical size of the board
@@ -31,19 +31,24 @@ METHODS:
 - self.__str__(): returns basic string representation of minesweeper board
 
 OUTPUTS:
-- The MineSweeper object
+- the MineSweeper object
 
 Tile:
 DESCRIPTION:
+The Tile class contains information of a tile on the Mine Sweeper board.
 
 PARAMETERS:
+- row (int): vertical position of the tile
+- col (int): horizontal position of the tile
 
 LIMITATIONS:
 - There is no way to tell the flagged status of a revealed tile from the string representation
 
 METHODS:
+self.__repr__(): determines and returns the string representation for the different tile states
 
 OUTPUTS:
+- the Tile object
 """
 import random
 
