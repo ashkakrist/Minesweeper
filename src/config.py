@@ -1,4 +1,44 @@
-"""GUI difficulty selection screen"""
+"""
+README - GUI game setup starting screen:
+A class which generates a pop-up at the start of the game,
+which allows the player to adjust the OS version, the size
+of the playfield, and the difficulty of the game.
+
+
+ADDITIONAL PACKAGES:
+    tkinter - a python library used to create the GUI.
+
+
+StartScreen (class):
+    DESCRIPTION:
+    The StartScreen creates the popup at the start of the
+    game in which the player can adjust the OS version, the
+    size of the playfield, and the difficulty of the game.
+
+        __init__ (function) - Initialises the class attributes.
+        choose_OS (function) -
+        set_playfield (function) -
+        set_row_col (function) -
+        new_difficulty_level_window -
+        easy (function) -
+        normal (function) -
+        hard (function) -
+
+    PARAMETERS:
+        tk.TK -
+
+    LIMITATIONS:
+        1.
+        2.
+        ...
+
+    STRUCTURES:
+        No structures used.
+
+    OUTPUT:
+
+
+"""
 
 import tkinter as tk
 from src.app import App
