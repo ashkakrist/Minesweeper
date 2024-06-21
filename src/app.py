@@ -94,7 +94,7 @@ class App(tk.Tk):
     def create_button_grid(self, rows, cols):
         # grid_menu = tk.Frame(self)
         # grid_menu.pack(padx=10, pady=10)
-        # 
+        #
         # res_but = tk.Button(grid_menu, text="Restart")
         # res_but.pack()
         #
