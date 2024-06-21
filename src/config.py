@@ -150,8 +150,13 @@ class StartScreen(tk.Tk):
         Kill starting screen and create new minesweeper gui with settings that are easy
         (low mine count, large safe radius).
         """
-        app = App(self.WIDTH, self.HEIGHT, int(self.ROWS.get()), int(self.COLUMNS.get()),
-                  int(self.ROWS.get()) * int(self.COLUMNS.get()) // 6, 2, self.OS.get())
+        app = App(self.WIDTH,
+                  self.HEIGHT,
+                  int(self.ROWS.get()),
+                  int(self.COLUMNS.get()),
+                  int(self.ROWS.get()) * int(self.COLUMNS.get()) // 6,
+                  2,
+                  self.OS.get())
         self.destroy()
         app.mainloop()
 
@@ -160,8 +165,13 @@ class StartScreen(tk.Tk):
         Kill starting screen and create new minesweeper gui with settings that are medium difficult.
         (medium mine count, large safe radius).
         """
-        app = App(self.WIDTH, self.HEIGHT, int(self.ROWS.get()), int(self.COLUMNS.get()),
-                  int(self.ROWS.get()) * int(self.COLUMNS.get()) // 4, 2, self.OS.get())
+        app = App(self.WIDTH,
+                  self.HEIGHT,
+                  int(self.ROWS.get()),
+                  int(self.COLUMNS.get()),
+                  int(self.ROWS.get()) * int(self.COLUMNS.get()) // 4,
+                  2,
+                  self.OS.get())
         self.destroy()
         app.mainloop()
 
@@ -170,7 +180,12 @@ class StartScreen(tk.Tk):
         Hardest mode
         (High mine count, small safe radius).
         """
-        app = App(self.WIDTH, self.HEIGHT, int(self.ROWS.get()), int(self.COLUMNS.get()),
-                  int(self.ROWS.get()) * int(self.COLUMNS.get()) // 2, 1, self.OS.get())
+        app = App(self.WIDTH,
+                  self.HEIGHT,
+                  int(self.ROWS.get()),
+                  int(self.COLUMNS.get()),
+                  int(self.ROWS.get()) * int(self.COLUMNS.get()) // 2,
+                  1,
+                  self.OS.get())
         self.destroy()
         app.mainloop()
