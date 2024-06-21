@@ -1,12 +1,13 @@
 """GUI - maybe rename?
 README MINESWEEPER GUI TKINTER
 SUMMARY
-    This beautiful code generates the graphical user interface of the minesweeper playfield.
+    This code generates the graphical user interface of the minesweeper playfield.
+
 DESCRIPTION
     App (class)
         __init__ (function) - Initialises the class. 
-        win (function) - 
-        loss (function) - 
+        win (function) - Shows a pop up when the player has won the game.
+        loss (function) - Shows a pop up when the player has lost the game
         show_popup (function) - 
         restart (function) - 
         create_button_grid (function) - 
@@ -41,11 +42,11 @@ import tkinter as tk
 import src.engine as engine
 import src.config as cfg
 
-
 class App(tk.Tk):
     def __init__(self, width, height, rows, cols, mines, safe_radius, right_click=2):
         tk.Tk.__init__(self)
         self.title('Minesweeper')
+
         #self.geometry(f'{width}x{height}')
         self.resizable(False, False)  # Doesn't work with Mac? Some of the columns are outside the window.
         self.board = engine.MineSweeper(rows, cols, mines, safe_radius)
@@ -54,9 +55,22 @@ class App(tk.Tk):
         self.buttons = [[None for _ in range(cols)] for _ in range(rows)]
         self.OS = right_click
 
+        # label for timer
+        self.timer = tk.Label(self, text=" ", font=('Arial', 40))
+        self.timer.grid(row=0, column=0, columnspan=self.cols)
+        self.now = 0
+        self.updateClock()
+
         self.create_button_grid(rows, cols)
         self.board.on_win += [self.win]
         self.board.on_loss += [self.loss]
+
+    def updateClock(self):
+        self.now += 1
+        now = '%02d : %02d' % (self.now//60, self.now%60)
+        self.timer.configure(text=now)
+        self.timer.after(1000, self.updateClock)
+
 
     def win(self):
         self.show_popup("You won!")
@@ -106,7 +120,7 @@ class App(tk.Tk):
                 button = tk.Button(self, text=self.board.board[r][c].__repr__(), width=4, height=2)
                 button.bind('<Button-1>', lambda event, row=r, col=c: self.on_left_click(row, col))
                 button.bind('<Button-%d>' % self.OS, lambda event, row=r, col=c: self.on_right_click(row, col))
-                button.grid(row=r, column=c, padx=1, pady=1, sticky=tk.NSEW)
+                button.grid(row=r + 1, column=c, padx=1, pady=1, sticky=tk.NSEW)
                 self.buttons[r][c] = button
 
     def on_left_click(self, row, col):
@@ -125,6 +139,6 @@ class App(tk.Tk):
                     self.buttons[r][c].grid_remove()
                 if self.board.board[r][c].__repr__() in ['1', '2', '3', '4', '5', '6', '7', '8']:
                     label = tk.Label(self, text=self.board.board[r][c].__repr__(), width=4, height=2, borderwidth=1)
-                    label.grid(row=r, column=c, padx=5, pady=5)
+                    label.grid(row=r+1, column=c, padx=5, pady=5)
                     self.buttons[r][c].grid_remove()
                     self.buttons[r][c] = label
