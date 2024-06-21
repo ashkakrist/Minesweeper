@@ -1,7 +1,7 @@
 """GUI - maybe rename?
 README MINESWEEPER GUI TKINTER
 SUMMARY
-    This code generates the graphical user interface of the minesweeper playfield.
+    This beautiful code generates the graphical user interface of the minesweeper playfield.
 DESCRIPTION
     App (class)
         __init__ (function) - Initialises the class. 
