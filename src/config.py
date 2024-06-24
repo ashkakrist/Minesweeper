@@ -62,7 +62,7 @@ class StartScreen(tk.Tk):
             self.OS contains the value for the OS version. The initial
             setting is Windows. This value is based on the behavior of the right mouse click in either windows or apple.
         """
-        tk.Tk__init__(self)
+        tk.Tk.__init__(self)
         self.title('Minesweeper')
         self.geometry("300x225")
         self.resizable(False, False)
