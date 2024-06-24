@@ -6,6 +6,7 @@ The two classes are MineSweeper, which is the whole game, and Tile, which make u
 ADDITIONAL PACKAGES:
     random - a python library used to randomly distribute the mines.
 """
+
 import random
 
 
@@ -83,6 +84,7 @@ class MineSweeper:
         OUTPUTS:
         - boolean value that is true if the specified position exists on the board, or false if it does not exist
         '''
+
         return row in range(self.n_rows) and col in range(self.n_cols)
 
     # returns a set of adjacent tiles (including the tile itself) in a square radius
@@ -106,6 +108,7 @@ class MineSweeper:
         OUTPUTS:
         - a set of adjacent tiles to the specified position, including the tile at the specified position itself
         '''
+
         tiles = set()
 
         # loops all row/column indices around the tile
@@ -133,6 +136,7 @@ class MineSweeper:
         OUTPUTS:
         The method has no output: the MineSweeper object is modified directly.
         '''
+
         self.board = []
 
         # creates rows
