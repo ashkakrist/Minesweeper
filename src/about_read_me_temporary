@@ -1,0 +1,8 @@
+Opzet READ ME docstrings:
+
+Bovenaan python file:
+    Summary - samenvatting van file, wat de code erin doet.
+    Additional packages - packages die gebruikt worden die niet standaard in
+            python zitten.(Ook in algemene READ ME zetten)
+
+Class:
