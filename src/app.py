@@ -57,18 +57,20 @@ class App(tk.Tk):
     OUTPUT:
         GUI on which the minesweeper game can be played.
     """
+
     def __init__(self, rows, cols, mines, safe_radius, right_click=3):
         """
-        tk.TK -
-        self -
-        width -
-        height -
-        rows -
-        cols -
-        mines -
-        safe_radius -
-        message -
-        popup -
+        self.title: gives the GUI a title
+        self.resizable: to make sure that the user cannot change the size of the GUI
+        self.board: minesweeper object
+        self.rows: number of rows
+        self.cols: number of columns
+        self.buttons: list of lists with Nones. Has self.rows number of rows and self.columns number of columns
+        self.OS: Operation system (Windows or Apple). Value is equal to the right_click variable and determined in the Config GUI.
+        self.timer: a label that shows how long the user has been playing the game
+        self.now: variable that ensures the timer restarts every new game
+        self.ticking: Boolean variable, default = True. This variable is changed when a game is won, lost or quit.
+                      This variable was added to make sure the timer stops when a game is finished.
         """
 
         tk.Tk.__init__(self)
@@ -87,11 +89,11 @@ class App(tk.Tk):
         self.ticking = True
         self.update_clock()
 
-        #label for picture of flag
+        # label for picture of flag
         self.flag_lbl = tk.Label(self, text= '🚩', font=('Arial', 40))
         self.flag_lbl.grid(row=0, column=0)
 
-        #label that shows number of flags
+        # label that shows number of flags
         self.n_flags_lbl = tk.Label(self, text=self.board.n_mines, font=('Arial', 30))
         self.n_flags_lbl.grid(row=0, column=1)
 
@@ -100,6 +102,22 @@ class App(tk.Tk):
         self.board.on_loss += [self.loss]
 
     def update_n_flags(self):
+        """
+        DESCRIPTION:
+        Function that updates the label on the GUI to show the number of flags that still need to be placed by the user
+        to win the game.
+
+        PARAMETERS:
+        None.
+
+        STRUCTURES:
+        A for-loop that iterates over all the tiles on the minesweeper board to count the number of tiles that are flagged.
+        An if-statement that reduces the count (= number of mines on board) when a tile is flagged.
+
+        OUTPUT:
+        A label that shows the number of flags that still need to be placed by the user to win the game.
+        """
+
         count = self.board.n_mines
         for tile in self.board:
             if tile.flagged:
@@ -107,6 +125,21 @@ class App(tk.Tk):
         self.n_flags_lbl['text'] = count
 
     def update_clock(self):
+        """
+        DESCRIPTION:
+        Function that ensures that the clock in the GUI is constantly updated.
+
+        PARAMETERS:
+        None.
+
+        STRUCTURES:
+        If-statement that checks if ticking is still True. If the game is won, lost or quit, ticking is set to False and
+        the clock will stop.
+
+        OUTPUT:
+        Label that shows how long the user has been playing the game.
+        """
+
         if self.ticking:
             self.now += 1
             now = '%02d : %02d' % (self.now//60, self.now%60)
@@ -114,14 +147,62 @@ class App(tk.Tk):
             self.timer.after(1000, self.update_clock)
 
     def win(self):
+        """
+        DESCRIPTION:
+        Function that sets ticking to False and calls the show_popup function with the message: "You won!"
+
+        PARAMETERS:
+        None
+
+        STRUCTURES:
+        None
+
+        OUTPUT:
+        A pop up GUI that tells the uses that he/she has won the game. The popup also contains two buttons; the user
+        can choose to quit or restart the game.
+        """
+
         self.ticking = False
         self.show_popup("You won!")
 
     def loss(self):
+        """
+        DESCRIPTION:
+        Function that sets ticking to False and calls the show_popup function with the message: "You lost!"
+
+        PARAMETERS:
+        None
+
+        STRUCTURES:
+        None
+
+        OUTPUT:
+        A pop up GUI that tells the uses that he/she has lost the game. The popup also contains two buttons; the user
+        can choose to quit or restart the game.
+        """
+
         self.ticking = False
         self.show_popup("You lost!")
 
     def show_popup(self, message):
+        """
+        DESCRIPTION:
+        A function that creates a pop up GUI in which the user receives a message that he/she has lost or won the game.
+        The pop-up also has two buttons; exit and restart.
+            The exit button calls the function quit.
+            The restart button calls the function restart.
+
+        PARAMETERS:
+        message: a string variable that is defined in the function win or lost.
+
+        STRUCTURES:
+        None.
+
+        OUTPUT:
+        A pop up GUI that tells the user that he/she has won or lost the game. The user can click on one of two buttons;
+        exit or restart.
+        """
+
         popup = tk.Toplevel(self)
         popup.title("Game Over")
         popup.geometry("300x100")
@@ -139,16 +220,50 @@ class App(tk.Tk):
         restart_button.pack(side=tk.RIGHT, padx=10)
 
     def restart(self, popup):
+        """
+        DESCRIPTION:
+        A function that destroys the current config screen and restarts the game.
+
+        PARAMETERS:
+        popup: the pop-up that is shown to the user. It is needed by the function so it is able to destroy it.
+
+        STRUCTURES:
+        None
+
+        OUTPUT:
+        A new minesweeper game.
+        """
         popup.destroy()
         self.destroy()
         app = cfg.StartScreen()
         app.mainloop()
 
     def quit(self, popup):
+        """
+        DESCRIPTION:
+        A function that destroys the current config screen.
+
+        PARAMETERS:
+        popup: the pop-up that is shown to the user. It is needed by the function so it is able to destroy it.
+
+        STRUCTURES:
+        None.
+
+        OUTPUT:
+        None.
+        """
         popup.destroy()
         self.destroy()
 
     def create_button_grid(self, rows, cols):
+        """
+        DESCRIPTION:
+        A function that creates the grid of buttons based on the number of rows and columns that are
+                                             selected in the config GUI.
+        PARAMETERS:
+        STRUCTURES:
+        OUTPUT:
+        """
         for r in range(rows):
             for c in range(cols):
                 button = tk.Button(self, text=self.board.board[r][c].__repr__(), width=4, height=2)
@@ -158,15 +273,34 @@ class App(tk.Tk):
                 self.buttons[r][c] = button
 
     def on_left_click(self, row, col):
+        """
+        DESCRIPTION:
+        PARAMETERS:
+        STRUCTURES:
+        OUTPUT:
+        """
         self.board.reveal(row, col)
         self.update_button_grid()
 
     def on_right_click(self, row, col):
+        """
+        DESCRIPTION:
+        PARAMETERS:
+        STRUCTURES:
+        OUTPUT:
+        """
         self.board.flag(row, col)
         self.update_button_grid()
         self.update_n_flags()
 
     def update_button_grid(self):
+        """
+        DESCRIPTION:
+        PARAMETERS:
+        STRUCTURES:
+        OUTPUT:
+        """
+
         for r in range(self.rows):
             for c in range(self.cols):
                 self.buttons[r][c].config(text=self.board.board[r][c].__repr__())

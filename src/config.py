@@ -80,8 +80,6 @@ class StartScreen(tk.Tk):
         self.set_playfield()
         self.set_row_col()
 
-        self.NUMBER_OF_MINES = int(self.ROWS.get()) * int(self.COLUMNS.get()) // 4
-        self.SAFE_RADIUS = 2
         self.new_difficulty_level_window()
 
     def choose_OS(self):
