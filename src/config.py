@@ -15,24 +15,31 @@ from src.app import App
 
 class StartScreen(tk.Tk):
     """
+    DESCRIPTION
     The StartScreen creates the popup at the start of the game in which
     the player can adjust the OS version, the size of the playing field, and
     the difficulty of the game.
 
-    PARAMETERS are not needed when calling this class. tk.Tk is a parent this
-        class inherits from the tkinter package.
+    PARAMETERS
+    A class itself does not have parameters. The __init__ function contains these. In the __init more information
+    can be found about the parameters.
 
-    METHODS of this class are: __init__ (function), choose_OS (function),
-        set_playing field (function), set_row_col (function),
-        new_difficulty_level_window, easy (function), normal (function),
-        hard (function).
+    METHODS of this class are:
+    __init__ (function);
+    choose_OS (function);
+    set_playing field (function);
+    set_row_col (function);
+    new_difficulty_level_window;
+    easy (function);
+    normal (function);
+    hard (function);
 
     LIMITATIONS of this class are:
         1.  Other OS are not represented. We do not know how the GUI looks
-            in other OS than MacOS and Windows. The selection has to be
-            done manually and is not automatically detected. The selection is
-            not saved and has to be made at the start of every game.
-        2.
+            in other OS than MacOS and Windows.
+        2. The selection of the difficulty and playing field size has to be done manually
+           and is not automatically detected.
+        3. The selection of the difficulty has to be done after every game. The settings are not saved.
 
     STRUCTURES are not used in this class.
 
@@ -53,7 +60,7 @@ class StartScreen(tk.Tk):
             size for the medium playing field.
 
             self.OS contains the value for the OS version. The initial
-            setting is
+            setting is Windows. This value is based on the behavior of the right mouse click in either windows or apple.
         """
         tk.Tk.__init__(self)
         self.title('Minesweeper')
@@ -126,6 +133,7 @@ class StartScreen(tk.Tk):
         Creates the buttons with which the player can set the difficulty
         for the game (easy/normal/hard). Clicking the button initialises
         the creation of the board based on the settings the player selected.
+        Either the function easy, normal or hard is called.
         """
         button_frame = tk.Frame(self)
         button_frame.pack(pady=20)
