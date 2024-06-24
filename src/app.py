@@ -87,11 +87,11 @@ class App(tk.Tk):
         self.ticking = True
         self.update_clock()
 
-        #label for picture of flag
+        # label for picture of flag
         self.flag_lbl = tk.Label(self, text= '🚩', font=('Arial', 40))
         self.flag_lbl.grid(row=0, column=0)
 
-        #label that shows number of flags
+        # label that shows number of flags
         self.n_flags_lbl = tk.Label(self, text=self.board.n_mines, font=('Arial', 30))
         self.n_flags_lbl.grid(row=0, column=1)
 
