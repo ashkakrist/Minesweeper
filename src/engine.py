@@ -83,9 +83,6 @@ class MineSweeper:
         - An and-statement is used to check if both the row and the column coordinate are valid.
 
         OUTPUTS:
-
-        """
-
         - boolean value that is true if the specified position exists on the board, or false if it does not exist
         '''
 
@@ -111,9 +108,8 @@ class MineSweeper:
         - An if-statement is used to check if the row/column coordinates exist on the board.
 
         OUTPUTS:
-        """
         - a set of adjacent tiles to the specified position, including the tile at the specified position itself
-        """
+        '''
 
         tiles = set()
 
