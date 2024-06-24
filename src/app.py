@@ -85,7 +85,7 @@ class App(tk.Tk):
         self.timer.grid(row=0, column=2, columnspan=self.cols)
         self.now = 0
         self.ticking = True
-        self.updateClock()
+        self.update_clock()
 
         #label for picture of flag
         self.flag_lbl = tk.Label(self, text= '🚩', font=('Arial', 40))
