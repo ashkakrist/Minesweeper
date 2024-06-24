@@ -44,7 +44,7 @@ class StartScreen(tk.Tk):
 
     def __init__(self):
         """
-        Initialises the class attributes.
+        Initialises the class attributes:
             self.title, self.geometry, and self.resizable assign some
             basic functions to the game setup starting screen.
 
