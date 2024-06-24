@@ -233,6 +233,7 @@ class App(tk.Tk):
         OUTPUT:
             A new minesweeper game.
         """
+
         popup.destroy()
         self.destroy()
         app = cfg.StartScreen()
@@ -252,6 +253,7 @@ class App(tk.Tk):
         OUTPUT:
             None.
         """
+
         popup.destroy()
         self.destroy()
 
@@ -272,6 +274,7 @@ class App(tk.Tk):
         OUTPUT:
             A grid of buttons with rows number of rows and cols number of columns.
         """
+
         for r in range(rows):
             for c in range(cols):
                 button = tk.Button(self, text=self.board.board[r][c].__repr__(), width=4, height=2)
@@ -303,8 +306,8 @@ class App(tk.Tk):
     def on_right_click(self, row, col):
         """
        DESCRIPTION:
-           A function that is called when the user uses a right mouse click on the button. It flags the tile and calls the
-           function update_button_grid.
+       		A function that is called when the user uses a right mouse click on the button. It flags the tile, calls the
+       		function update_button_grid and update_n_flags.
 
        PARAMETERS:
            row(int): the row coordinate of the button
@@ -314,7 +317,8 @@ class App(tk.Tk):
             None.
 
        OUTPUT:
-            An updated app with button.
+       		An updated App GUI with that shows a flag on the button that was right clicked and an updated label that shows
+       		how many flags the user still needs to place to win the game.
        """
 
         self.board.flag(row, col)
