@@ -10,7 +10,7 @@ Select the preferred board size and difficulty.\
 \
 Left click on the board to reveal a tile and right click on a tile to flag it.\
 \
-If a tile displays a number n, this means that there are n mines adjacent to the number.\
+If a tile displays a number n, this means that there are n mines adjacent to the numbered tile.\
 \
 Once all mines are flagged, the player has won the game. If the player left clicks a mine, the game is lost.
 
