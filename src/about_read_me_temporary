@@ -1,8 +1,28 @@
 Opzet READ ME docstrings:
 
-Bovenaan python file:
+Bovenaan python file in docstrings:
     Summary - samenvatting van file, wat de code erin doet.
     Additional packages - packages die gebruikt worden die niet standaard in
             python zitten.(Ook in algemene READ ME zetten)
 
-Class:
+Voor ELKE class in de file, in docstrings:
+    Summary - korte samenvatting van de class
+    Methods - naam van de methods in de class
+    Parameters - als de class parameters heeft
+    Limitations - minstens TWEE limitations van de class, als die er niet zijn, een uitleg
+            waarom de class geen limitations heeft
+    Structures - (buiten methods om!!!)gebruikte structures als dat van toepassing
+            is. Anders duidelijk maken dat dit niet van toepassing is.
+    Output - wat de output van de class is.
+
+Voor de __init__ method in de class:
+    "Initialises class attributes..."
+    Korte beschrijving van attributes als ze niet vanzelfsprekend zijn.
+
+Voor ELKE method in de class, in docstrings:
+    Summary - korte samenvatting wat de functie van de method is.
+    Parameters - als deze gebruikt worden.
+    Structures - gebruikte structures als dat van toepassing is. Anders duidelijk
+            maken dat dit niet van toepassing is.
+    Output - output van de method wanneer van toepassing.
+
