@@ -2,53 +2,6 @@
 README:
 This script contains two object class definitions for playing the Mine Sweeper game.
 The two classes are MineSweeper, which is the whole game, and Tile, which make up the board of the game.
-
-MineSweeper:
-DESCRIPTION:
-The MineSweeper class contains the logic behind the Mine Sweeper game.
-
-PARAMETERS:
-- n_rows (int): the vertical size of the board
-- n_cols (int): the horizontal size of the board
-- n_mines (int): the amount of mines to be distributed on the board
-- safe_radius(int): the square radius around the first revealed tile where there will be no mines
-
-LIMITATIONS:
-- The randomly generated games can not always be solved without guessing.
-- Tiles that are flagged are not revealed when the reveal method recurses around empty tiles.
-
-METHODS:
-- self.valid_pos(row, col): checks if given row/column coordinates exist on the board
-- self.adjacent(row, col, radius): returns a set of adjacent tiles in a square radius
-- self.create_board(): creates a board of tiles in a list of lists
-- self.reveal(row, col): reveals a tile on the board, recurses when it reveals an empty tile
-- self.lay_mines(start_row, start_col): places mines on the board
-- self.assign_numbers(): counts the amount of adjacent mines for each tile
-- self.flag(row, col): places or removes flag on tile
-- self.game_over(): checks if the game has been won or lost and triggers corresponding eventhandlers
-- self.__iter__(): makes MineSweeper object iterable, looping over a MineSweeper object will go through each tile on the board
-- self.__next__(): calculates row/column indices and returns tile at those coordinates
-- self.__str__(): returns basic string representation of minesweeper board
-
-OUTPUTS:
-- the MineSweeper object
-
-Tile:
-DESCRIPTION:
-The Tile class contains information of a tile on the Mine Sweeper board.
-
-PARAMETERS:
-- row (int): vertical position of the tile
-- col (int): horizontal position of the tile
-
-LIMITATIONS:
-- There is no way to tell the flagged status of a revealed tile from the string representation
-
-METHODS:
-self.__repr__(): determines and returns the string representation for the different tile states
-
-OUTPUTS:
-- the Tile object
 """
 import random
 
@@ -56,10 +9,34 @@ import random
 # class for minesweeper game
 class MineSweeper:
     """
-    Mine Sweeper game object;
-    Use the reveal method to specify the row and column index of a tile you want to reveal;
-    Use the flag method to flag a specified tile, flagged tiles cannot be revealed;
-    Eventhandlers for game over can be added to the on_win and on_loss attributes (lists)
+    DESCRIPTION:
+    The MineSweeper class contains the logic behind the Mine Sweeper game.
+
+    PARAMETERS:
+    - n_rows (int): the vertical size of the board
+    - n_cols (int): the horizontal size of the board
+    - n_mines (int): the amount of mines to be distributed on the board
+    - safe_radius(int): the square radius around the first revealed tile where there will be no mines
+
+    LIMITATIONS:
+    - The randomly generated games can not always be solved without guessing.
+    - Tiles that are flagged are not revealed when the reveal method recurses around empty tiles.
+
+    METHODS:
+    - self.valid_pos(row, col): checks if given row/column coordinates exist on the board
+    - self.adjacent(row, col, radius): returns a set of adjacent tiles in a square radius
+    - self.create_board(): creates a board of tiles in a list of lists
+    - self.reveal(row, col): reveals a tile on the board, recurses when it reveals an empty tile
+    - self.lay_mines(start_row, start_col): places mines on the board
+    - self.assign_numbers(): counts the amount of adjacent mines for each tile
+    - self.flag(row, col): places or removes flag on tile
+    - self.game_over(): checks if the game has been won or lost and triggers corresponding eventhandlers
+    - self.__iter__(): makes MineSweeper object iterable, looping over a MineSweeper object will go through each tile on the board
+    - self.__next__(): calculates row/column indices and returns tile at those coordinates
+    - self.__str__(): returns basic string representation of minesweeper board
+
+    OUTPUTS:
+    - the MineSweeper object
     """
 
     def __init__(self, n_rows: int, n_cols: int, n_mines: int, safe_radius):
@@ -110,6 +87,14 @@ class MineSweeper:
 
     # reveals a specified tile
     def reveal(self, row, col):
+        '''
+        reveals specified tile;
+        tile must be specified by giving the row and column coordinates (int) as input;
+        the minefield is created only after the first time reveal is called;
+        this is to ensure that the first tile revealed will never be a mine;
+        checks that the tile is neither revealed nor flagged before revealing it;
+        if the revealed tile has zero adjacent mines, the method recursively reveal each adjacent tile
+        '''
 
         # lays mines after the first tile has been selected, so the first tile will never be a mine
         if self.pristine:
@@ -163,6 +148,13 @@ class MineSweeper:
 
     # toggle flag on specified tile
     def flag(self, row, col):
+        '''
+        toggles the flagged status of a tile;
+        tile must be specified by giving the row and column coordinates (int) as input;
+        only tiles that are not revealed can be flagged;
+        flagged tiles cannot be revealed
+        '''
+
         tile = self.board[row][col]
 
         # inverts flagged status of an unrevealed tile
@@ -232,7 +224,21 @@ class MineSweeper:
 # class for minesweeper tile
 class Tile:
     """
-    Tile object for Mine Sweeper game
+    DESCRIPTION:
+    The Tile class contains information of a tile on the Mine Sweeper board.
+
+    PARAMETERS:
+    - row (int): vertical position of the tile
+    - col (int): horizontal position of the tile
+
+    LIMITATIONS:
+    - There is no way to tell the flagged status of a revealed tile from the string representation
+
+    METHODS:
+    self.__repr__(): determines and returns the string representation for the different tile states
+
+    OUTPUTS:
+    - the Tile object
     """
 
     def __init__(self, row, col):
