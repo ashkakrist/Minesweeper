@@ -19,9 +19,11 @@ class StartScreen(tk.Tk):
     the player can adjust the OS version, the size of the playing field, and
     the difficulty of the game.
 
+    PARAMETERS are not needed when calling this class. tk.Tk is a parent this
+        class inherits from the tkinter package.
+
     METHODS of this class are: __init__ (function), choose_OS (function),
         set_playing field (function), set_row_col (function),
-
         new_difficulty_level_window, easy (function), normal (function),
         hard (function).
 
