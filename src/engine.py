@@ -17,17 +17,17 @@ class MineSweeper:
 
     PARAMETERS:
     The parameters that are needed in the __init__ are:
-        - n_rows (int): the vertical size of the board
-        - n_cols (int): the horizontal size of the board
-        - n_mines (int): the amount of mines to be distributed on the board
-        - safe_radius(int): the square radius around the first revealed tile where there will be no mines
+    - n_rows (int): the vertical size of the board
+    - n_cols (int): the horizontal size of the board
+    - n_mines (int): the amount of mines to be distributed on the board
+    - safe_radius(int): the square radius around the first revealed tile where there will be no mines
 
     LIMITATIONS:
     - The randomly generated games can not always be solved without guessing.
     - Tiles that are flagged are not revealed when the reveal method recurses around empty tiles.
 
     METHODS:
-    - __init__(self, n_rows: int, n_cols: int, n_mines: int, safe_radius): initialises the class
+    - self.__init__(n_rows: int, n_cols: int, n_mines: int, safe_radius): initialises the class
     - self.valid_pos(row, col): checks if given row/column coordinates exist on the board
     - self.adjacent(row, col, radius): returns a set of adjacent tiles in a square radius
     - self.create_board(): creates a board of tiles in a list of lists
@@ -41,13 +41,20 @@ class MineSweeper:
     - self.__str__(): returns basic string representation of minesweeper board
 
     STRUCTURES:
-    The structures used are elaborated on in the methods themselves.
+    The structures used are elaborated on in the methods own docstrings.
 
     OUTPUTS:
     - the MineSweeper object
     """
 
     def __init__(self, n_rows: int, n_cols: int, n_mines: int, safe_radius):
+        '''
+        initialises class attributes and creates board;
+        safe_radius (int) is the square radius around the first tile where no mines are placed;
+        pristine (bool) is true when the player has not revealed any tiles yet
+        on_win and on_loss are lists of eventhandlers that should be triggered when the game ends in a win or loss
+        '''
+
         self.n_rows = n_rows
         self.n_cols = n_cols
         self.n_mines = n_mines
@@ -62,10 +69,43 @@ class MineSweeper:
 
     # checks if specified position exists on the board
     def valid_pos(self, row, col):
+        '''
+        DESCRIPTION:
+        checks if specified position exists on the board
+
+        PARAMETERS:
+        - row (int): the row coordinate that needs to be verified
+        - col (int): the column coordinate that needs to be verified
+
+        STRUCTURES:
+        - An and-statement is used to compare the outcomes of two logic tests.
+
+        OUTPUTS:
+        - boolean value that is true if the specified position exists on the board, or false if it does not exist
+        '''
         return row in range(self.n_rows) and col in range(self.n_cols)
 
     # returns a set of adjacent tiles (including the tile itself) in a square radius
     def adjacent(self, row, col, radius=1):
+        '''
+        DESCRIPTION:
+        returns a set of all adjacent tiles to a specified position on the board
+
+        PARAMETERS:
+        - row (int): the row coordinate of the tile whose adjacent tiles need to be returned
+        - col (int): the column coordinate of the tile whose adjacent tiles need to be returned
+        - radius (int): the square radius around the specified position that needs to be returned; default: 1
+                        When radius is 1, the method returns all tiles in a 3 x 3 grid centered around the specified position.
+                        When radius is 2, the grid increases to 5 x 5, etc.
+                        A set of only the specified tile itself will be returned when the radius is 0.
+
+        STRUCTURES:
+        - An embedded for-loop is used to go through all row/column coordinates around the specified position.
+        - An if-statement is used to check if the row/column coordinates exist on the board.
+
+        OUTPUTS:
+        - a set of adjacent tiles to the specified position, including the tile at the specified position itself
+        '''
         tiles = set()
 
         # loops all row/column indices around the tile
@@ -80,6 +120,19 @@ class MineSweeper:
 
     # creates a board of empty tiles
     def create_board(self):
+        '''
+        DESCRIPTION:
+        creates a board of empty tiles
+        
+        PARAMETERS:
+        This method has no input parameters, asside from the MineSweeper object.
+        
+        STRUCTURES:
+        - An embedded for-loop is used to go through all row/column coordinates on the board.
+        
+        OUTPUTS:
+        The method has no output: the MineSweeper object is modified directly.
+        '''
         self.board = []
 
         # creates rows
@@ -96,12 +149,22 @@ class MineSweeper:
     # reveals a specified tile
     def reveal(self, row, col):
         '''
-        reveals specified tile;
-        tile must be specified by giving the row and column coordinates (int) as input;
-        the minefield is created only after the first time reveal is called;
-        this is to ensure that the first tile revealed will never be a mine;
-        checks that the tile is neither revealed nor flagged before revealing it;
-        if the revealed tile has zero adjacent mines, the method recursively reveal each adjacent tile
+        DESCRIPTION:
+        reveals a specified tile
+
+        PARAMETERS:
+        - row (int): the row coordinate of the tile that is to be revealed
+        - col (int): the column coordinate of the tile that is to be revealed
+
+        STRUCTURES:
+        - An if-statement is used to check if this is the first time this method is called.
+        - An if-statement is used to check if the tile is neither revealed nor flagged.
+        - An if-statement is used to check if the method should recurse.
+        - A for-loop is used to go through all adjacent tiles.
+        - Recursion is used to reveal adjacent tiles.
+
+        OUTPUTS:
+        The method has no output: the Tile object is modified directly.
         '''
 
         # lays mines after the first tile has been selected, so the first tile will never be a mine

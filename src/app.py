@@ -261,8 +261,15 @@ class App(tk.Tk):
         A function that creates the grid of buttons based on the number of rows and columns that are
                                              selected in the config GUI.
         PARAMETERS:
+        rows: the number of rows for which buttons should be created
+        cols: the number of columns for which buttons should be created
+
         STRUCTURES:
+        An embedded for-loop is used to go through all row/column coordinates that have to be on the button grid.
+        On every row/column coordinate a button is created.
+
         OUTPUT:
+        A grid of buttons with rows number of rows and cols number of columns.
         """
         for r in range(rows):
             for c in range(cols):
@@ -275,20 +282,40 @@ class App(tk.Tk):
     def on_left_click(self, row, col):
         """
         DESCRIPTION:
+        A function that is called when the user uses a left mouse click on the button. It reveales the tile and calls the
+        function update_button_grid.
+
         PARAMETERS:
+        row(int): the row coordinate of the button
+        col(int): the column coordinate of the button
+
         STRUCTURES:
+        None.
+
         OUTPUT:
+        An updated app with at least one extra revealed button.
         """
+
         self.board.reveal(row, col)
         self.update_button_grid()
 
     def on_right_click(self, row, col):
         """
-        DESCRIPTION:
-        PARAMETERS:
-        STRUCTURES:
-        OUTPUT:
-        """
+       DESCRIPTION:
+       A function that is called when the user uses a right mouse click on the button. It flags the tile and calls the
+       function update_button_grid.
+
+       PARAMETERS:
+       row(int): the row coordinate of the button
+       col(int): the column coordinate of the button
+
+       STRUCTURES:
+       None.
+
+       OUTPUT:
+       An updated app with button.
+       """
+
         self.board.flag(row, col)
         self.update_button_grid()
         self.update_n_flags()
