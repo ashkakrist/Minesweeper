@@ -52,7 +52,7 @@ class StartScreen(tk.Tk):
             self.OS contains the value for the OS version. The initial
             setting is
         """
-        tk.Tk.__init__(self)
+        tk.Tk__init__(self)
         self.title('Minesweeper')
         self.geometry("300x225")
         self.resizable(False, False)
