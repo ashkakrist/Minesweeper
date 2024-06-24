@@ -30,7 +30,8 @@ class StartScreen(tk.Tk):
     LIMITATIONS of this class are:
         1.  Other OS are not represented. We do not know how the GUI looks
             in other OS than MacOS and Windows. The selection has to be
-            done manually and is not automatically detected.
+            done manually and is not automatically detected. The selection is
+            not saved and has to be made at the start of every game.
         2.
 
     STRUCTURES are not used in this class.
