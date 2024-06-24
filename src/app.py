@@ -1,56 +1,76 @@
-"""GUI - maybe rename?
-README MINESWEEPER GUI TKINTER
-SUMMARY
+"""
+README:
     This code generates the graphical user interface of the minesweeper playfield.
 
-DESCRIPTION
-    App (class)
-        __init__ (function) - Initialises the class. 
-        win (function) - calls function show_popup with a winning message.
-        loss (function) - calls function show_popup with a losing message
-        show_popup (function) - creates a pop up with a label showing the message: "you won" or "you lost"
-                                and two buttons: restart and quit. These buttons call the functions with the same name.
-        restart (function) -
-        quit (function) -
-        restart (function) - 
-        create_button_grid (function) - 
-        on_left_click (function) - 
-        on_right_click (function) - 
-        update_button_grid (function) -
-
-PARAMETERS
-    tk.TK - 
-    self - 
-    width - 
-    height - 
-    rows - 
-    cols - 
-    mines - 
-    safe_radius - 
-    message - 
-    popup -
-
-LIMITATIONS
-    1. Due to differences between windows and macOS, the code needs to be altered for a
-    mac. In this code the following differences are:
-        - Code for the event when clicking the buttons.
-        - Graphical layout, screenwidth etc.
-    2. 
-    ...
-STRUCTURES
-    for loop (create_button_grid) - 
-    for loop (update_button_grid) -
-
-OUTPUT
-    GUI on which the game can be played.
+ADDITIONAL PACKAGES:
+    tkinter - a python library used to create the GUI
+    config - a module made to create a GUI that allowes the user to choose game options
+    engine - a module made to run the minesweeper game
 """
+
 import tkinter as tk
 import src.engine as engine
 import src.config as cfg
 
 
 class App(tk.Tk):
-    def __init__(self, rows, cols, mines, safe_radius, right_click=2):
+    """
+    DESCRIPTION:
+    The App creates a GUI
+
+    PARAMETERS:
+    The parameters that are needed in the __innit__ are:
+        - rows: number of rows of the minesweeper board. Is decided by the user in the config GUI.
+        - cols: number of columns of the minesweeper board. Is decided by the user in the config GUI.
+        - mines: number of mines of the minesweeper board. Is chosen in the config GUI as well.
+                 Based on the difficulty and the size that the user selects. The number of mines is set.
+        - safe_radius: the square radius around the first click where no mines are placed.
+        - right_click: default is 3 (Windows). If the user selects that he/she has an apple OS, the value is set to 2.
+
+    METHODS:
+    - __init__ (self): initialises the class.
+    - update_clock(self): makes sure that the clock at the top of the GUI keeps working until the user wins, loses
+                          or ends the game.
+    - win (self): calls function show_popup with a winning message.
+    - loss (self): calls function show_popup with a losing message.
+    - show_popup (self, message): creates a pop up with a label showing the message: "you won" or "you lost"
+                                  and two buttons: restart and quit. These buttons call the functions with the same name.
+    - restart (self, popup): destroys the config screen and starts a new game.
+    - quit (self, popup): destroys the config screen.
+    - create_button_grid (self, rows, cols): creates a grid of buttons based on the number of rows and columns that are
+                                             selected in the config GUI.
+    - on_left_click (self, row, col): reveals the tile on the board with the same coordinates (row/column) as the button.
+                                      and calls the function update_button_grid.
+    - on_right_click (self, row, col): flags the tile on the board with the same coordinates (row/column) as the button.
+    - update_button_grid (self): iterates over the board and changes text on the buttons to match the state of the
+                                 minesweeper board. This is done after every mouse click.
+
+    LIMITATIONS:
+        1. ???
+
+        2. Buttons can change size during the game. This happens when the text within a button is changed. The buttons are
+           always changed to the size of the largest text within a column.
+
+    STRUCTURES:
+    The structures used are elaborated on in the methods themselves.
+
+    OUTPUT:
+        GUI on which the minesweeper game can be played.
+    """
+    def __init__(self, rows, cols, mines, safe_radius, right_click=3):
+        """
+        tk.TK -
+        self -
+        width -
+        height -
+        rows -
+        cols -
+        mines -
+        safe_radius -
+        message -
+        popup -
+        """
+
         tk.Tk.__init__(self)
         self.title('Minesweeper')
         self.resizable(False, False)  # Doesn't work with Mac? Some of the columns are outside the window.
@@ -67,10 +87,11 @@ class App(tk.Tk):
         self.ticking = True
         self.updateClock()
 
-        #label for number of flags
+        #label for picture of flag
         self.flag_lbl = tk.Label(self, text= '🚩', font=('Arial', 40))
         self.flag_lbl.grid(row=0, column=0)
 
+        #label that shows number of flags
         self.n_flags_lbl = tk.Label(self, text=self.board.n_mines, font=('Arial', 30))
         self.n_flags_lbl.grid(row=0, column=1)
 
@@ -85,12 +106,12 @@ class App(tk.Tk):
                 count -= 1
         self.n_flags_lbl['text'] = count
 
-    def updateClock(self):
+    def update_clock(self):
         if self.ticking:
             self.now += 1
             now = '%02d : %02d' % (self.now//60, self.now%60)
             self.timer.configure(text=now)
-            self.timer.after(1000, self.updateClock)
+            self.timer.after(1000, self.update_clock)
 
     def win(self):
         self.ticking = False

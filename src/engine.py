@@ -2,6 +2,9 @@
 README:
 This script contains two object class definitions for playing the Mine Sweeper game.
 The two classes are MineSweeper, which is the whole game, and Tile, which make up the board of the game.
+
+ADDITIONAL PACKAGES:
+    random - a python library used to randomly distribute the mines.
 """
 import random
 
@@ -13,16 +16,18 @@ class MineSweeper:
     The MineSweeper class contains the logic behind the Mine Sweeper game.
 
     PARAMETERS:
-    - n_rows (int): the vertical size of the board
-    - n_cols (int): the horizontal size of the board
-    - n_mines (int): the amount of mines to be distributed on the board
-    - safe_radius(int): the square radius around the first revealed tile where there will be no mines
+    The parameters that are needed in the __init__ are:
+        - n_rows (int): the vertical size of the board
+        - n_cols (int): the horizontal size of the board
+        - n_mines (int): the amount of mines to be distributed on the board
+        - safe_radius(int): the square radius around the first revealed tile where there will be no mines
 
     LIMITATIONS:
     - The randomly generated games can not always be solved without guessing.
     - Tiles that are flagged are not revealed when the reveal method recurses around empty tiles.
 
     METHODS:
+    - __init__(self, n_rows: int, n_cols: int, n_mines: int, safe_radius): initialises the class
     - self.valid_pos(row, col): checks if given row/column coordinates exist on the board
     - self.adjacent(row, col, radius): returns a set of adjacent tiles in a square radius
     - self.create_board(): creates a board of tiles in a list of lists
@@ -34,6 +39,9 @@ class MineSweeper:
     - self.__iter__(): makes MineSweeper object iterable, looping over a MineSweeper object will go through each tile on the board
     - self.__next__(): calculates row/column indices and returns tile at those coordinates
     - self.__str__(): returns basic string representation of minesweeper board
+
+    STRUCTURES:
+    The structures used are elaborated on in the methods themselves.
 
     OUTPUTS:
     - the MineSweeper object

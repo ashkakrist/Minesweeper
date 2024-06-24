@@ -1,12 +1,15 @@
 """
-README - GUI game setup starting screen:
-A class which generates a pop-up at the start of the game, which allows
+README:
+This script creates a graphical user interface for the game setup starting screen:
+
+It contains a class which generates a pop-up at the start of the game, that allows
 the player to adjust the OS version, the size of the playing field, and the
 difficulty of the game. The settings are used for the final creation of
 the board.
 
 ADDITIONAL PACKAGES:
     tkinter - a python library used to create the GUI.
+    app - a module that creates the GUI for the minesweeper game
 """
 
 import tkinter as tk
@@ -15,36 +18,37 @@ from src.app import App
 
 class StartScreen(tk.Tk):
     """
-    DESCRIPTION
+    DESCRIPTION:
     The StartScreen creates the popup at the start of the game in which
     the player can adjust the OS version, the size of the playing field, and
     the difficulty of the game.
 
-    PARAMETERS
-    A class itself does not have parameters. The __init__ function contains these. In the __init more information
-    can be found about the parameters.
+    PARAMETERS:
+    The class does not have parameters.
 
-    METHODS of this class are:
-    __init__ (function);
-    choose_OS (function);
-    set_playing field (function);
-    set_row_col (function);
-    new_difficulty_level_window;
-    easy (function);
-    normal (function);
-    hard (function);
+    METHODS:
+        __init__ (self);
+        choose_OS (function);
+        set_playing field (function);
+        set_row_col (function);
+        new_difficulty_level_window (function);
+        easy (function);
+        normal (function);
+        hard (function);
 
-    LIMITATIONS of this class are:
+    LIMITATIONS:
         1.  Other OS are not represented. We do not know how the GUI looks
             in other OS than MacOS and Windows.
         2. The selection of the difficulty and playing field size has to be done manually
            and is not automatically detected.
         3. The selection of the difficulty has to be done after every game. The settings are not saved.
 
-    STRUCTURES are not used in this class.
+    STRUCTURES:
+    are not used in this class.
 
-    OUTPUT of this class is a window in which the user can choose the
-        preferred OS version, the size of the playing field, and the
+    OUTPUT:
+        a window in which the user can choose the preferred OS version,
+        the size of the playing field, and the
         difficulty of the game. The window is closed when the player has
         made her/his selection.
     """
