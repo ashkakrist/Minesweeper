@@ -59,6 +59,8 @@ class App(tk.Tk):
         2. Buttons can change size during the game. This happens when the text within a button is changed. The buttons
            are always changed to the size of the largest text within a column.
 
+        3. The sound effects are only working on Windows computers.
+
     STRUCTURES:
     The structures used are elaborated on in the methods themselves.
 
