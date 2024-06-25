@@ -19,7 +19,7 @@ class App(tk.Tk):
         The App creates a GUI
 
     PARAMETERS:
-        The parameters that are needed in the __innit__ are:
+        The parameters that are needed in the __init__ are:
             - rows: number of rows of the minesweeper board. Is decided by the user in the config GUI.
             - cols: number of columns of the minesweeper board. Is decided by the user in the config GUI.
             - mines: number of mines of the minesweeper board. Is chosen in the config GUI as well.
