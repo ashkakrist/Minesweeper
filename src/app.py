@@ -172,7 +172,7 @@ class App(tk.Tk):
         self.ticking = False
         self.show_popup("You won!")
         if self.OS == 3:
-            winsound.PlaySound(r'C:\Users\kikiv\Desktop\mixkit-bomb-explosion-in-battle-2800.wav', winsound.SND_FILENAME)
+            winsound.PlaySound(r'assets/winning.wav', winsound.SND_FILENAME | winsound.SND_ASYNC)
 
 
     def loss(self):
@@ -194,7 +194,7 @@ class App(tk.Tk):
         self.ticking = False
         self.show_popup("You lost!")
         if self.OS == 3:
-            winsound.PlaySound(r'C:\Users\kikiv\Desktop\mixkit-bomb-explosion-in-battle-2800.wav', winsound.SND_FILENAME)
+            winsound.PlaySound(r'assets/explosion.wav', winsound.SND_FILENAME | winsound.SND_ASYNC)
 
     def show_popup(self, message):
         """
