@@ -6,6 +6,7 @@ ADDITIONAL PACKAGES:
     tkinter - a python library used to create the GUI
     config - a module made to create a GUI that allows the user to choose game options
     engine - a module made to run the minesweeper game
+    winsound - a built in module on Windows that can be used to play sounds.
 """
 
 import tkinter as tk
@@ -166,7 +167,7 @@ class App(tk.Tk):
 
         OUTPUT:
             A pop-up GUI that tells the uses that he/she has won the game. The popup also contains two buttons; the user
-            can choose to quit or restart the game.
+            can choose to quit or restart the game. The function also plays a winning sound on Windows.
         """
 
         self.ticking = False
@@ -187,7 +188,7 @@ class App(tk.Tk):
 
         OUTPUT:
             A pop-up GUI that tells the uses that he/she has lost the game. The popup also contains two buttons; the
-            user can choose to quit or restart the game.
+            user can choose to quit or restart the game. The function also plays an explosion sound on Windows.
         """
 
         self.ticking = False
