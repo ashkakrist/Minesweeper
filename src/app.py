@@ -1,10 +1,10 @@
 """
 README:
-    This code generates the graphical user interface of the minesweeper playfield.
+    This code generates the graphical user interface of the minesweeper playing field.
 
 ADDITIONAL PACKAGES:
     tkinter - a python library used to create the GUI
-    config - a module made to create a GUI that allowes the user to choose game options
+    config - a module made to create a GUI that allows the user to choose game options
     engine - a module made to run the minesweeper game
 """
 
@@ -25,7 +25,8 @@ class App(tk.Tk):
             - mines: number of mines of the minesweeper board. Is chosen in the config GUI as well.
                      Based on the difficulty and the size that the user selects. The number of mines is set.
             - safe_radius: the square radius around the first click where no mines are placed.
-            - right_click: default is 3 (Windows). If the user selects that he/she has an apple OS, the value is set to 2.
+            - right_click: default is 3 (Windows). If the user selects that he/she has an apple OS, the value is set to
+                           2.
 
     METHODS:
         - __init__ (self): initialises the class.
@@ -33,23 +34,27 @@ class App(tk.Tk):
                               or ends the game.
         - win (self): calls function show_popup with a winning message.
         - loss (self): calls function show_popup with a losing message.
-        - show_popup (self, message): creates a pop up with a label showing the message: "you won" or "you lost"
-                                      and two buttons: restart and quit. These buttons call the functions with the same name.
+        - show_popup (self, message): creates a pop-up with a label showing the message: "you won" or "you lost"
+                                      and two buttons: restart and quit. These buttons call the functions with the same
+                                      name.
         - restart (self, popup): destroys the config screen and starts a new game.
         - quit (self, popup): destroys the config screen.
-        - create_button_grid (self, rows, cols): creates a grid of buttons based on the number of rows and columns that are
-                                                 selected in the config GUI.
-        - on_left_click (self, row, col): reveals the tile on the board with the same coordinates (row/column) as the button.
-                                          and calls the function update_button_grid.
-        - on_right_click (self, row, col): flags the tile on the board with the same coordinates (row/column) as the button.
+        - create_button_grid (self, rows, cols): creates a grid of buttons based on the number of rows and columns that
+                                                 are selected in the config GUI.
+        - on_left_click (self, row, col): reveals the tile on the board with the same coordinates (row/column) as the
+                                          button and calls the function update_button_grid.
+        - on_right_click (self, row, col): flags the tile on the board with the same coordinates (row/column) as the
+                                           button.
         - update_button_grid (self): iterates over the board and changes text on the buttons to match the state of the
                                      minesweeper board. This is done after every mouse click.
 
     LIMITATIONS:
-        1. ???
+        1. The gui is slow. This can in part be attributed to Python (it being a slow language compared to compiled
+           languages). Another reason can be that there are multiple nested for loops in multiple methods which are
+           called within each other adding complexity.
 
-        2. Buttons can change size during the game. This happens when the text within a button is changed. The buttons are
-           always changed to the size of the largest text within a column.
+        2. Buttons can change size during the game. This happens when the text within a button is changed. The buttons
+           are always changed to the size of the largest text within a column.
 
     STRUCTURES:
     The structures used are elaborated on in the methods themselves.
@@ -66,7 +71,8 @@ class App(tk.Tk):
         self.rows: number of rows
         self.cols: number of columns
         self.buttons: list of lists with Nones. Has self.rows number of rows and self.columns number of columns
-        self.OS: Operation system (Windows or Apple). Value is equal to the right_click variable and determined in the Config GUI.
+        self.OS: Operating system (Windows or Apple). Value is equal to the right_click variable and determined in the
+        Config GUI.
         self.timer: a label that shows how long the user has been playing the game
         self.now: variable that ensures the timer restarts every new game
         self.ticking: Boolean variable, default = True. This variable is changed when a game is won, lost or quit.
@@ -90,7 +96,7 @@ class App(tk.Tk):
         self.update_clock()
 
         # label for picture of flag
-        self.flag_lbl = tk.Label(self, text= '🚩', font=('Arial', 40))
+        self.flag_lbl = tk.Label(self, text='🚩', font=('Arial', 40))
         self.flag_lbl.grid(row=0, column=0)
 
         # label that shows number of flags
@@ -104,15 +110,15 @@ class App(tk.Tk):
     def update_n_flags(self):
         """
         DESCRIPTION:
-            Function that updates the label on the GUI to show the number of flags that still need to be placed by the user
-            to win the game.
+            Function that updates the label on the GUI to show the number of flags that still need to be placed by the
+            user to win the game.
 
         PARAMETERS:
             None.
 
         STRUCTURES:
-            A for-loop that iterates over all the tiles on the minesweeper board to count the number of tiles that are flagged.
-            An if-statement that reduces the count (= number of mines on board) when a tile is flagged.
+            A for-loop that iterates over all the tiles on the minesweeper board to count the number of tiles that are
+            flagged. An if-statement that reduces the count (= number of mines on board) when a tile is flagged.
 
         OUTPUT:
             A label that shows the number of flags that still need to be placed by the user to win the game.
@@ -133,8 +139,8 @@ class App(tk.Tk):
             None.
 
         STRUCTURES:
-            If-statement that checks if ticking is still True. If the game is won, lost or quit, ticking is set to False and
-            the clock will stop.
+            If-statement that checks if ticking is still True. If the game is won, lost or quit, ticking is set to False
+            and the clock will stop.
 
         OUTPUT:
             Label that shows how long the user has been playing the game.
@@ -142,7 +148,7 @@ class App(tk.Tk):
 
         if self.ticking:
             self.now += 1
-            now = '%02d : %02d' % (self.now//60, self.now%60)
+            now = '%02d : %02d' % (self.now // 60, self.now % 60)
             self.timer.configure(text=now)
             self.timer.after(1000, self.update_clock)
 
@@ -158,7 +164,7 @@ class App(tk.Tk):
             None
 
         OUTPUT:
-            A pop up GUI that tells the uses that he/she has won the game. The popup also contains two buttons; the user
+            A pop-up GUI that tells the uses that he/she has won the game. The popup also contains two buttons; the user
             can choose to quit or restart the game.
         """
 
@@ -177,8 +183,8 @@ class App(tk.Tk):
             None.
 
         OUTPUT:
-            A pop up GUI that tells the uses that he/she has lost the game. The popup also contains two buttons; the user
-            can choose to quit or restart the game.
+            A pop-up GUI that tells the uses that he/she has lost the game. The popup also contains two buttons; the
+            user can choose to quit or restart the game.
         """
 
         self.ticking = False
@@ -187,7 +193,8 @@ class App(tk.Tk):
     def show_popup(self, message):
         """
         DESCRIPTION:
-            A function that creates a pop up GUI in which the user receives a message that he/she has lost or won the game.
+            A function that creates a pop up GUI in which the user receives a message that he/she has lost or won the
+            game.
             The pop-up also has two buttons; exit and restart.
             The exit button calls the function quit.
             The restart button calls the function restart.
@@ -199,8 +206,8 @@ class App(tk.Tk):
             None.
 
         OUTPUT:
-            A pop-up GUI that tells the user that he/she has won or lost the game. The user can click on one of two buttons;
-            exit or restart.
+            A pop-up GUI that tells the user that he/she has won or lost the game. The user can click on one of two
+            buttons; exit or restart.
         """
 
         popup = tk.Toplevel(self)
@@ -286,8 +293,8 @@ class App(tk.Tk):
     def on_left_click(self, row, col):
         """
         DESCRIPTION:
-            A function that is called when the user uses a left mouse click on the button. It reveales the tile and calls the
-            function update_button_grid.
+            A function that is called when the user uses a left mouse click on the button. It reveals the
+            tile and calls the function update_button_grid.
 
         PARAMETERS:
             row(int): the row coordinate of the button
@@ -306,19 +313,19 @@ class App(tk.Tk):
     def on_right_click(self, row, col):
         """
        DESCRIPTION:
-       		A function that is called when the user uses a right mouse click on the button. It flags the tile, calls the
-       		function update_button_grid and update_n_flags.
+           A function that is called when the user uses a right mouse click on the button. It flags the tile, calls the
+           function update_button_grid and update_n_flags.
 
        PARAMETERS:
            row(int): the row coordinate of the button
            col(int): the column coordinate of the button
 
        STRUCTURES:
-            None.
+           None.
 
        OUTPUT:
-       		An updated App GUI with that shows a flag on the button that was right clicked and an updated label that shows
-       		how many flags the user still needs to place to win the game.
+           An updated App GUI with that shows a flag on the button that was right clicked and an updated label that shows
+           how many flags the user still needs to place to win the game.
        """
 
         self.board.flag(row, col)
