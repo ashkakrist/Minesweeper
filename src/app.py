@@ -13,6 +13,7 @@ import tkinter as tk
 import src.engine as engine
 import src.config as cfg
 import winsound
+import os
 
 
 class App(tk.Tk):
@@ -173,7 +174,8 @@ class App(tk.Tk):
         self.ticking = False
         self.show_popup("You won!")
         if self.OS == 3:
-            winsound.PlaySound('winning.wav', winsound.SND_FILENAME | winsound.SND_ASYNC)
+
+            winsound.PlaySound('assets\\winning.wav', winsound.SND_FILENAME | winsound.SND_ASYNC)
 
     def loss(self):
         """
@@ -194,7 +196,8 @@ class App(tk.Tk):
         self.ticking = False
         self.show_popup("You lost!")
         if self.OS == 3:
-            winsound.PlaySound('explosion.wav', winsound.SND_FILENAME | winsound.SND_ASYNC)
+            print(os.getcwd())
+            winsound.PlaySound('assets\\explosion.wav', winsound.SND_FILENAME | winsound.SND_ASYNC)
 
     def show_popup(self, message):
         """
