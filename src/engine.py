@@ -24,8 +24,8 @@ class MineSweeper:
     - safe_radius(int): the square radius around the first revealed tile where there will be no mines
 
     LIMITATIONS:
-    - The randomly generated games can not always be solved without guessing.
-    - Tiles that are flagged are not revealed when the reveal method recurses around empty tiles.
+    1. The randomly generated games can not always be solved without guessing.
+    2. Tiles that are flagged are not revealed when the reveal method recurses around empty tiles.
 
     METHODS:
     - self.__init__(n_rows: int, n_cols: int, n_mines: int, safe_radius): initialises the class
