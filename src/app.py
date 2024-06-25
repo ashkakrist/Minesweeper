@@ -11,6 +11,7 @@ ADDITIONAL PACKAGES:
 import tkinter as tk
 import src.engine as engine
 import src.config as cfg
+import winsound
 
 
 class App(tk.Tk):
@@ -164,6 +165,9 @@ class App(tk.Tk):
 
         self.ticking = False
         self.show_popup("You won!")
+        if self.OS == 3:
+            winsound.PlaySound(r'C:\Users\kikiv\Desktop\mixkit-bomb-explosion-in-battle-2800.wav', winsound.SND_FILENAME)
+
 
     def loss(self):
         """
@@ -183,6 +187,8 @@ class App(tk.Tk):
 
         self.ticking = False
         self.show_popup("You lost!")
+        if self.OS == 3:
+            winsound.PlaySound(r'C:\Users\kikiv\Desktop\mixkit-bomb-explosion-in-battle-2800.wav', winsound.SND_FILENAME)
 
     def show_popup(self, message):
         """
