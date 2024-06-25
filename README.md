@@ -1,3 +1,5 @@
+## !!! important: set working directory to "Minesweeper" and NOT to "Minesweeper\\src" ##
+
 # Minesweeper #
 #### Group 4, INF-52806 ####
 
