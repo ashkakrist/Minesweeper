@@ -3,7 +3,7 @@ README:
 This script creates a graphical user interface for the game setup starting
 screen:
 
-It contains a class which generates a pop-up at the start of the game, that
+It contains ONE class which generates a pop-up at the start of the game, that
 allows the player to adjust the OS version, the size of the playing field,
 and the difficulty of the game. The settings are used for the final creation
 of the board.
@@ -17,7 +17,9 @@ app:        A module made to create the GUI for the minesweeper game.
 import tkinter as tk
 from src.app import App
 
-
+###########################################
+############### StartScreen ###############
+###########################################
 class StartScreen(tk.Tk):
     """
     DESCRIPTION:

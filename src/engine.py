@@ -11,7 +11,9 @@ random:     A python library used to randomly distribute the mines.
 import random
 
 
-# class for minesweeper game
+###########################################
+############### MineSweeper ###############
+###########################################
 class MineSweeper:
     """
     DESCRIPTION of the class "MineSweeper":
@@ -428,7 +430,9 @@ class MineSweeper:
         return '\n'.join(text)
 
 
-# class for minesweeper tile
+###########################################
+################### Tile ##################
+###########################################
 class Tile:
     """
     DESCRIPTION of the class "Tile":

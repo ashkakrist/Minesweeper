@@ -14,7 +14,9 @@ import tkinter as tk
 import src.engine as engine
 import src.config as cfg
 
-
+###########################################
+################### App ###################
+###########################################
 class App(tk.Tk):
     """
     DESCRIPTION:
