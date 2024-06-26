@@ -79,6 +79,8 @@ class StartScreen(tk.Tk):
 
         self.OS = tk.IntVar(value=3)
         self.choose_OS()
+        if self.OS == 3:
+            import winsound
 
         self.playfield = tk.IntVar(value=13)
         self.set_playfield()
@@ -86,8 +88,7 @@ class StartScreen(tk.Tk):
 
         self.new_difficulty_level_window()
 
-        if self.OS == 3:
-            import winsound
+
 
     def choose_OS(self):
         """
