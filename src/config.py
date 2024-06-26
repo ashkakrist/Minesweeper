@@ -217,6 +217,6 @@ class StartScreen(tk.Tk):
                   int(self.COLUMNS.get()),
                   int(self.ROWS.get()) * int(self.COLUMNS.get()) // 2,
                   1,
-                  self.OS.get())
+                self.OS.get())
         self.destroy()
         app.mainloop()
