@@ -395,8 +395,7 @@ class App(tk.Tk):
                 self.buttons[r][c].config(text=self.board.board[r][c].__repr__())
                 if self.board.board[r][c].__repr__() == '$':
                     self.buttons[r][c].grid_remove()
-                if self.board.board[r][c].__repr__() in \
-                        ['1', '2', '3', '4', '5', '6', '7', '8']:
+                if self.board.board[r][c].__repr__().isdigit():
                     label = tk.Label(self,
                                      text=self.board.board[r][c].__repr__(),
                                      width=4, height=2, borderwidth=1)
