@@ -1,10 +1,11 @@
 """
 README:
-This script contains two object class definitions for playing the Mine Sweeper game.
-The two classes are MineSweeper, which is the whole game, and Tile, which make up the board of the game.
+This script contains TWO object class definitions for playing the Mine Sweeper
+game. The two classes are MineSweeper (which is the whole game) and
+Tile (which makes up the board of the game).
 
 ADDITIONAL PACKAGES:
-    random - a python library used to randomly distribute the mines.
+random:     A python library used to randomly distribute the mines.
 """
 
 import random
@@ -13,48 +14,62 @@ import random
 # class for minesweeper game
 class MineSweeper:
     """
-    DESCRIPTION:
+    DESCRIPTION of the class "MineSweeper":
     The MineSweeper class contains the logic behind the Mine Sweeper game.
 
     PARAMETERS:
     The parameters that are needed in the __init__ are:
-    - n_rows (int): the vertical size of the board
-    - n_cols (int): the horizontal size of the board
-    - n_mines (int): the amount of mines to be distributed on the board
-    - safe_radius(int): the square radius around the first revealed tile where there will be no mines
+    n_rows (int):       The vertical size of the board.
+    n_cols (int):       The horizontal size of the board.
+    n_mines (int):      The amount of mines to be distributed on the board.
+    safe_radius(int):   The square radius around the first revealed tile where
+                        there will be no mines.
 
     LIMITATIONS:
-    1. The randomly generated games can not always be solved without guessing.
-    2. Tiles that are flagged are not revealed when the reveal method recurses around empty tiles.
+    1.  The randomly generated games can not always be solved without guessing.
+    2.  Tiles that are flagged are not revealed when the reveal method will
+        recurse around empty tiles.
 
     METHODS:
-    - self.__init__(n_rows: int, n_cols: int, n_mines: int, safe_radius): initialises the class
-    - self.valid_pos(row, col): checks if given row/column coordinates exist on the board
-    - self.adjacent(row, col, radius): returns a set of adjacent tiles in a square radius
-    - self.create_board(): creates a board of tiles in a list of lists
-    - self.reveal(row, col): reveals a tile on the board, recurses when it reveals an empty tile
-    - self.lay_mines(start_row, start_col): places mines on the board
-    - self.assign_numbers(): counts the amount of adjacent mines for each tile
-    - self.flag(row, col): places or removes flag on tile
-    - self.game_over(): checks if the game has been won or lost and triggers corresponding event handlers
-    - self.__iter__(): makes MineSweeper object iterable, looping over a MineSweeper object will go through each tile
-      on the board
-    - self.__next__(): calculates row/column indices and returns tile at those coordinates
-    - self.__str__(): returns basic string representation of minesweeper board
+    self.__init__(n_rows: int, n_cols: int, n_mines: int, safe_radius):
+                                Initialises the class.
+    self.valid_pos(row, col):   Checks if given row/column coordinates exist on
+                                the board.
+    self.adjacent(row, col, radius): Returns a set of adjacent tiles in a square
+                                radius.
+    self.create_board():        Creates a board of tiles in a list of lists.
+    self.reveal(row, col):      Reveals a tile on the board, will recurse when
+                                it reveals an empty tile.
+    self.lay_mines(start_row, start_col): Places mines on the board.
+    self.assign_numbers():      Counts the amount of adjacent mines for each tile.
+    self.flag(row, col):        Places or removes flag on tile.
+    self.game_over():           Checks if the game has been won or lost and
+                                triggers corresponding event handlers.
+    self.__iter__():            Makes MineSweeper object iterable, looping over a
+                                MineSweeper object will go through each tile on
+                                the board.
+    self.__next__():            Calculates row/column indices and returns tile at
+                                those coordinates.
+    self.__str__():             Returns basic string representation of minesweeper
+                                board.
 
     STRUCTURES:
     The structures used are elaborated on in the methods own docstrings.
 
     OUTPUTS:
-    - the MineSweeper object
+    The MineSweeper object.
     """
 
     def __init__(self, n_rows: int, n_cols: int, n_mines: int, safe_radius):
         """
-        initialises class attributes and creates board;
-        safe_radius (int) is the square radius around the first tile where no mines are placed;
-        pristine (bool) is true when the player has not revealed any tiles yet
-        on_win and on_loss are lists of event handlers that should be triggered when the game ends in a win or loss
+        This method initialises class attributes and creates board:
+        safe_radius (int):  The square radius around the first tile where no
+                            mines are placed.
+        pristine (bool):    True when the player has not revealed any tiles yet
+        on_win (list):      Event handler that should be triggered when the game
+                            ends in a win.
+        on_loss (list):     Event handler that should be triggered when the game
+                            ends in a loss.
         """
 
         self.n_rows = n_rows
@@ -73,17 +88,19 @@ class MineSweeper:
     def valid_pos(self, row, col):
         """
         DESCRIPTION:
-        checks if specified position exists on the board
+        This method checks if specified position exists on the board.
 
         PARAMETERS:
-        - row (int): the row coordinate that needs to be verified
-        - col (int): the column coordinate that needs to be verified
+        row (int):  The row coordinate that needs to be verified.
+        col (int):  The column coordinate that needs to be verified.
 
         STRUCTURES:
-        - An and-statement is used to check if both the row and the column coordinate are valid.
+        And-statement:  used to check if both the row and the column coordinate
+                        are valid.
 
         OUTPUTS:
-        - boolean value that is true if the specified position exists on the board, or false if it does not exist
+        Boolean value that is true if the specified position exists on the board,
+        or false if it does not exist.
         """
 
         return row in range(self.n_rows) and col in range(self.n_cols)
@@ -92,23 +109,30 @@ class MineSweeper:
     def adjacent(self, row, col, radius=1):
         """
         DESCRIPTION:
-        returns a set of all adjacent tiles to a specified position on the board
+        Returns a set of all adjacent tiles to a specified position on the board.
 
         PARAMETERS:
-        - row (int): the row coordinate of the tile whose adjacent tiles need to be returned
-        - col (int): the column coordinate of the tile whose adjacent tiles need to be returned
-        - radius (int): the square radius around the specified position that needs to be returned; default: 1
-                        When radius is 1, the method returns all tiles in a 3 x 3 grid centered around the specified
-                        position.
+        row (int):      The row coordinate of the tile whose adjacent tiles need
+                        to be returned.
+        col (int):      The column coordinate of the tile whose adjacent tiles
+                        need to be returned.
+        radius (int):   The square radius around the specified position that needs
+                        to be returned; default: 1.
+                        When radius is 1, the method returns all tiles in a
+                        3 x 3 grid centered around the specified position.
                         When radius is 2, the grid increases to 5 x 5, etc.
-                        A set of only the specified tile itself will be returned when the radius is 0.
+                        A set of only the specified tile itself will be returned
+                        when the radius is 0.
 
         STRUCTURES:
-        - An embedded for-loop is used to go through all row/column coordinates around the specified position.
-        - An if-statement is used to check if the row/column coordinates exist on the board.
+        Embedded for-loop:  Is used to go through all row/column coordinates
+                            around the specified position.
+        If-statement:       Used to check if the row/column coordinates exist on
+                            the board.
 
         OUTPUTS:
-        - a set of adjacent tiles to the specified position, including the tile at the specified position itself
+        A set of adjacent tiles to the specified position, including the tile at
+        the specified position itself.
         """
 
         tiles = set()
@@ -127,13 +151,15 @@ class MineSweeper:
     def create_board(self):
         """
         DESCRIPTION:
-        creates a board of empty tiles
+        This method creates a board of empty tiles.
 
         PARAMETERS:
-        This method has no input parameters, aside from the MineSweeper object itself.
+        No additional parameters aside from the MineSweeper object itself.
+        itself.
 
         STRUCTURES:
-        - An embedded for-loop is used to go through all row/column coordinates on the board.
+        Embedded for-loop:  Used to go through all row/column coordinates on the
+        board.
 
         OUTPUTS:
         The method has no output: the MineSweeper object is modified directly.
@@ -156,18 +182,19 @@ class MineSweeper:
     def reveal(self, row, col):
         """
         DESCRIPTION:
-        reveals a specified tile
+        Reveals a specified tile.
 
         PARAMETERS:
-        - row (int): the row coordinate of the tile that is to be revealed
-        - col (int): the column coordinate of the tile that is to be revealed
+        row (int):      The row coordinate of the tile that is to be revealed.
+        col (int):      The column coordinate of the tile that is to be revealed.
 
         STRUCTURES:
-        - An if-statement is used to check if this is the first time this method is called.
-        - An if-statement is used to check if the tile is neither revealed nor flagged.
-        - An if-statement is used to check if the method should recurse.
-        - A for-loop is used to go through all adjacent tiles.
-        - Recursion is used to reveal adjacent tiles.
+        If-statement:   Used to check if this is the first time this method is
+                        called.
+        If-statement:   Used to check if the tile is neither revealed nor flagged.
+        If-statement:   Used to check if the method should recurse.
+        For-loop:       Used to go through all adjacent tiles.
+        Recursion:      Used to reveal adjacent tiles.
 
         OUTPUTS:
         The method has no output: the Tile object is modified directly.
@@ -198,15 +225,15 @@ class MineSweeper:
     def lay_mines(self, start_row, start_col):
         """
         DESCRIPTION:
-        randomly distributes mines over the board
+        Randomly distributes mines over the board.
 
         PARAMETERS:
-        - start_row (int): the row coordinate of the first revealed tile
-        - start_col (int): the column coordinate of the first revealed tile
+        start_row (int):    The row coordinate of the first revealed tile.
+        start_col (int):    The column coordinate of the first revealed tile.
 
         STRUCTURES:
-        - A for-loop is used to make a set of all tiles on the board.
-        - A for-loop is used to place mines on some tiles.
+        For-loop:   Used to make a set of all tiles on the board.
+        For-loop:   Used to place mines on some tiles.
 
         OUTPUTS:
         The method has no output: the Tile objects are modified directly.
@@ -231,15 +258,16 @@ class MineSweeper:
     def assign_numbers(self):
         """
         DESCRIPTION:
-        reveals a specified tile
+        Reveals a specified tile.
 
         PARAMETERS:
-        This method has no input parameters, asside from the MineSweeper object itelf.
+        This method has no input parameters, aside from the MineSweeper object
+        itself.
 
         STRUCTURES:
-        - A for-loop is used to go through all tiles.
-        - A for-loop is used to count the mines among adjacent tiles.
-        - An if-statement is used to check if a tile is a mine.
+        For-loop:       Used to go through all tiles.
+        For-loop:       Used to count the mines among adjacent tiles.
+        If-statement:   Used to check if a tile is a mine.
 
         OUTPUTS:
         The method has no output: the Tile objects are modified directly.
@@ -256,14 +284,14 @@ class MineSweeper:
     def flag(self, row, col):
         """
         DESCRIPTION:
-        places or removes flag on specified tile
+        Places or removes flag on specified tile.
 
         PARAMETERS:
-        - row (int): the row coordinate of the tile that is to be flagged
-        - col (int): the column coordinate of the tile that is to be flagged
+        row (int):      The row coordinate of the tile that is to be flagged.
+        col (int):      The column coordinate of the tile that is to be flagged.
 
         STRUCTURES:
-        - An if-statement is used to check if the tile is revealed.
+        If-statement:   Used to check if the tile is revealed.
 
         OUTPUTS:
         The method has no output: the Tile object is modified directly.
@@ -278,23 +306,28 @@ class MineSweeper:
     def game_over(self):
         """
         DESCRIPTION:
-        checks if the game is over and whether the player has won or lost
+        Checks if the game is over and whether the player has won or lost.
 
         PARAMETERS:
-        This method has no input parameters, aside from the MineSweeper object itself.
+        This method has no input parameters, aside from the MineSweeper object
+        itself.
 
         STRUCTURES:
-        - A for-loop is used to go through all tiles.
-        - An if-statement is used to check if a tile is revealed.
-        - An if-statement is used to check if the revealed tile is a mine.
-        - An if-statement is used to check if the player has lost. Loss is checked before victory, because it can occur
-          that both win and loss are true. This happens when only one revealed tile remains after a mine is revealed.
-          In such a scenario, the player has lost, so loss should be checked first.
-        - An elif-statement is used to check if the player has won.
-        - A for-loop is used to trigger event handlers.
+        For-loop:       Used to go through all tiles.
+        If-statement:   Used to check if a tile is revealed.
+        If-statement:   Used to check if the revealed tile is a mine.
+        If-statement:   Used to check if the player has lost. Loss is checked
+                        before victory, because it can occur that both win and
+                        loss are true. This happens when only one revealed tile
+                        remains after a mine is revealed.
+                        In such a scenario, the player has lost, so loss should
+                        be checked first.
+        Elif-statement: Used to check if the player has won.
+        For-loop:       Used to trigger event handlers.
 
         OUTPUTS:
-        The proper event handlers are triggered when this method determines that the game is over.
+        The proper event handlers are triggered when this method determines that
+        the game is over.
         """
         loss = False
         n_hidden = self.n_rows * self.n_cols
@@ -325,17 +358,18 @@ class MineSweeper:
     def __iter__(self):
         '''
         DESCRIPTION:
-        This method makes it possible to iterate over the MineSweeper object. Looping over the MineSweeper goes through
-        each tile on the board.
+        This method makes it possible to iterate over the MineSweeper object.
+        Looping over the MineSweeper goes through each tile on the board.
 
         PARAMETERS:
-        This method has no input parameters, asside from the MineSweeper object itelf.
+        This method has no input parameters, aside from the MineSweeper object
+        itself.
 
         STRUCTURES:
         This method does not contain any significant structures.
 
         OUTPUTS:
-        - the MineSweeper object with attribute n set to 0
+        The MineSweeper object with attribute n set to 0.
         '''
         self.n = 0
         return self
@@ -344,18 +378,20 @@ class MineSweeper:
     def __next__(self):
         '''
         DESCRIPTION:
-        returns the tile at the current point of iteration
+        This method returns the tile at the current point of iteration.
 
         PARAMETERS:
-        This method has no input parameters, asside from the MineSweeper object itelf.
+        This method has no input parameters, aside from the MineSweeper object
+        itself.
 
         STRUCTURES:
-        - An if-statement is used to check if the current point of iteration is within the limits of the board.
-        - A StopIteration is raised when all tiles have been looped over.
+        If-statement:   Used to check if the current point of iteration is
+                        within the limits of the board.
+        StopIteration:  Raised when all tiles have been looped over.
 
         OUTPUTS:
-        - the current tile in the iteration
-        - The MineSweeper object's n attribute is increased by one.
+        1.  The current tile in the iteration
+        2.  The MineSweeper object's n attribute is increased by one.
         '''
         if self.n < self.n_rows * self.n_cols:
 
@@ -377,16 +413,17 @@ class MineSweeper:
     def __str__(self):
         '''
         DESCRIPTION:
-        returns string representation of the MineSweeper board
+        Returns string representation of the MineSweeper board.
 
         PARAMETERS:
-        This method has no input parameters, asside from the MineSweeper object itelf.
+        This method has no input parameters, aside from the MineSweeper object
+        itself.
 
         STRUCTURES:
-        - A for-loop is used to go through all rows of the board.
+        For-loop:   Used to go through all rows of the board.
 
         OUTPUTS:
-        - each row of the MineSweeper board, separated by newlines
+        Each row of the MineSweeper board, separated by newlines.
         '''
         text = []
         for row in self.board:
@@ -399,21 +436,23 @@ class MineSweeper:
 # class for minesweeper tile
 class Tile:
     """
-    DESCRIPTION:
+    DESCRIPTION of the class "Tile":
     The Tile class contains information of a tile on the Mine Sweeper board.
 
     PARAMETERS:
-    - row (int): vertical position of the tile
-    - col (int): horizontal position of the tile
+    row (int):      Vertical position of the tile.
+    col (int):      Horizontal position of the tile.
 
     LIMITATIONS:
-    - There is no way to tell the flagged status of a revealed tile from the string representation
+    There is no way to tell the flagged status of a revealed tile from the string
+    representation.
 
     METHODS:
-    self.__repr__(): determines and returns the string representation for the different tile states
+    self.__repr__():    Determines and returns the string representation for the
+                        different tile states.
 
     OUTPUTS:
-    - the Tile object
+    The Tile object.
     """
 
     def __init__(self, row, col):
@@ -429,19 +468,19 @@ class Tile:
     def __repr__(self):
         """
         DESCRIPTION:
-        determines the string representation of the tile
+        Determines the string representation of the tile.
 
         PARAMETERS:
-        This method has no input parameters, asside from the Tile object itelf.
+        This method has no input parameters, aside from the Tile object itself.
 
         STRUCTURES:
-        - An if-statement is used to check if the tile is revealed.
-        - An if-statement is used to check if the tile is flagged.
-        - An elif-statement is used to check if the tile is a mine.
-        - An elif-statement is used to check if the tile's number more than 0.
+        If-statement:   Used to check if the tile is revealed.
+        If-statement:   Used to check if the tile is flagged.
+        Elif-statement: Used to check if the tile is a mine.
+        Elif-statement: Used to check if the tile's number more than 0.
 
         OUTPUTS:
-        - the single-character string representation of the tile
+        The single-character string representation of the tile.
         """
         if not self.revealed:
 
