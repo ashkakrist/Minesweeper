@@ -122,15 +122,21 @@ class StartScreen(tk.Tk):
         label.grid(row=0, column=0, columnspan=3)
 
         rad_wind = tk.Radiobutton(play_frame,
-                                  text="Small", variable=self.playfield, value=10)
+                                  text="Small",
+                                  variable=self.playfield,
+                                  value=10)
         rad_wind.grid(row=1, column=0)
 
         rad_mac = tk.Radiobutton(play_frame,
-                                 text="Medium", variable=self.playfield, value=13)
+                                 text="Medium",
+                                 variable=self.playfield,
+                                 value=13)
         rad_mac.grid(row=1, column=1)
 
         rad_mac = tk.Radiobutton(play_frame,
-                                 text="Large", variable=self.playfield, value=16)
+                                 text="Large",
+                                 variable=self.playfield,
+                                 value=16)
         rad_mac.grid(row=1, column=2)
 
     def set_row_col(self):

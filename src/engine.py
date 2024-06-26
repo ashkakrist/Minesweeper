@@ -105,7 +105,8 @@ class MineSweeper:
 
         return row in range(self.n_rows) and col in range(self.n_cols)
 
-    # returns a set of adjacent tiles (including the tile itself) in a square radius
+    # returns a set of adjacent tiles (including the tile itself) in a square
+    # radius
     def adjacent(self, row, col, radius=1):
         """
         DESCRIPTION:
@@ -141,7 +142,8 @@ class MineSweeper:
         for i in range(row - radius, row + radius + 1):
             for j in range(col - radius, col + radius + 1):
 
-                # checks if the tile exists on the board, before adding it to the output set
+                # checks if the tile exists on the board, before adding it to
+                # the output set
                 if self.valid_pos(i, j):
                     tiles.add(self.board[i][j])
 
@@ -200,7 +202,8 @@ class MineSweeper:
         The method has no output: the Tile object is modified directly.
         """
 
-        # lays mines after the first tile has been selected, so the first tile will never be a mine
+        # lays mines after the first tile has been selected, so the first tile
+        # will never be a mine
         if self.pristine:
             self.lay_mines(row, col)
             self.assign_numbers()

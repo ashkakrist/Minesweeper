@@ -119,11 +119,15 @@ class App(tk.Tk):
         self.update_clock()
 
         # label for picture of flag
-        self.flag_lbl = tk.Label(self, text='🚩', font=('Arial', 40))
+        self.flag_lbl = tk.Label(self,
+                                 text='🚩',
+                                 font=('Arial', 40))
         self.flag_lbl.grid(row=0, column=0)
 
         # label that shows number of flags
-        self.n_flags_lbl = tk.Label(self, text=self.board.n_mines, font=('Arial', 30))
+        self.n_flags_lbl = tk.Label(self,
+                                    text=self.board.n_mines,
+                                    font=('Arial', 30))
         self.n_flags_lbl.grid(row=0, column=1)
 
         self.create_button_grid(rows, cols)
@@ -198,7 +202,8 @@ class App(tk.Tk):
         self.ticking = False
         self.show_popup("You won!")
         if self.OS == 3:
-            winsound.PlaySound('assets\\winning.wav', winsound.SND_FILENAME | winsound.SND_ASYNC)
+            winsound.PlaySound('assets\\winning.wav',
+                               winsound.SND_FILENAME | winsound.SND_ASYNC)
 
     def loss(self):
         """
@@ -221,7 +226,8 @@ class App(tk.Tk):
         self.ticking = False
         self.show_popup("You lost!")
         if self.OS == 3:
-            winsound.PlaySound('assets\\explosion.wav', winsound.SND_FILENAME | winsound.SND_ASYNC)
+            winsound.PlaySound('assets\\explosion.wav',
+                               winsound.SND_FILENAME | winsound.SND_ASYNC)
 
     def show_popup(self, message):
         """
@@ -253,10 +259,14 @@ class App(tk.Tk):
         button_frame = tk.Frame(popup)
         button_frame.pack(pady=10)
 
-        exit_button = tk.Button(button_frame, text="Exit", command=lambda: self.quit(popup))
+        exit_button = tk.Button(button_frame,
+                                text="Exit",
+                                command=lambda: self.quit(popup))
         exit_button.pack(side=tk.LEFT, padx=10)
 
-        restart_button = tk.Button(button_frame, text="Restart", command=lambda: self.restart(popup))
+        restart_button = tk.Button(button_frame,
+                                   text="Restart",
+                                   command=lambda: self.restart(popup))
         restart_button.pack(side=tk.RIGHT, padx=10)
 
     def restart(self, popup):
@@ -321,9 +331,15 @@ class App(tk.Tk):
 
         for r in range(rows):
             for c in range(cols):
-                button = tk.Button(self, text=self.board.board[r][c].__repr__(), width=4, height=2)
-                button.bind('<Button-1>', lambda event, row=r, col=c: self.on_left_click(row, col))
-                button.bind('<Button-%d>' % self.OS, lambda event, row=r, col=c: self.on_right_click(row, col))
+                button = tk.Button(self,
+                                   text=self.board.board[r][c].__repr__(),
+                                   width=4, height=2)
+                button.bind('<Button-1>',
+                            lambda event, row=r,
+                                   col=c: self.on_left_click(row, col))
+                button.bind('<Button-%d>' % self.OS,
+                            lambda event, row=r,
+                                   col=c: self.on_right_click(row, col))
                 button.grid(row=r + 1, column=c, padx=1, pady=1, sticky=tk.NSEW)
                 self.buttons[r][c] = button
 
@@ -397,8 +413,11 @@ class App(tk.Tk):
                 self.buttons[r][c].config(text=self.board.board[r][c].__repr__())
                 if self.board.board[r][c].__repr__() == '$':
                     self.buttons[r][c].grid_remove()
-                if self.board.board[r][c].__repr__() in ['1', '2', '3', '4', '5', '6', '7', '8']:
-                    label = tk.Label(self, text=self.board.board[r][c].__repr__(), width=4, height=2, borderwidth=1)
+                if self.board.board[r][c].__repr__() in \
+                        ['1', '2', '3', '4', '5', '6', '7', '8']:
+                    label = tk.Label(self,
+                                     text=self.board.board[r][c].__repr__(),
+                                     width=4, height=2, borderwidth=1)
                     label.grid(row=r + 1, column=c, padx=5, pady=5)
                     self.buttons[r][c].grid_remove()
                     self.buttons[r][c] = label
