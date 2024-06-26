@@ -17,6 +17,7 @@ app:        A module made to create the GUI for the minesweeper game.
 import tkinter as tk
 from src.app import App
 
+
 ###########################################
 ############### StartScreen ###############
 ###########################################
@@ -95,8 +96,6 @@ class StartScreen(tk.Tk):
 
         self.new_difficulty_level_window()
 
-
-
     def choose_OS(self):
         """
         DESCRIPTION:
@@ -110,11 +109,11 @@ class StartScreen(tk.Tk):
         OS_frame = tk.Frame(self)
         OS_frame.pack(pady=20)
 
-        label = tk.Label(OS_frame, 
+        label = tk.Label(OS_frame,
                          text="Select operating system:")
         label.pack()
 
-        rad_wind = tk.Radiobutton(OS_frame, 
+        rad_wind = tk.Radiobutton(OS_frame,
                                   text="Windows", variable=self.OS, value=3)
         rad_wind.pack(padx=20, side=tk.LEFT)
 
