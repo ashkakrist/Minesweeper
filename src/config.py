@@ -1,12 +1,15 @@
 """
-README - GUI game setup starting screen:
-A class which generates a pop-up at the start of the game, which allows
+README:
+This script creates a graphical user interface for the game setup starting screen:
+
+It contains a class which generates a pop-up at the start of the game, that allows
 the player to adjust the OS version, the size of the playing field, and the
 difficulty of the game. The settings are used for the final creation of
 the board.
 
 ADDITIONAL PACKAGES:
     tkinter - a python library used to create the GUI.
+    app - a module that creates the GUI for the minesweeper game
 """
 
 import tkinter as tk
@@ -15,53 +18,51 @@ from src.app import App
 
 class StartScreen(tk.Tk):
     """
-    DESCRIPTION
+    DESCRIPTION:
     The StartScreen creates the popup at the start of the game in which
     the player can adjust the OS version, the size of the playing field, and
     the difficulty of the game.
 
-    PARAMETERS
-    A class itself does not have parameters. The __init__ function contains these. In the __init more information
-    can be found about the parameters.
+    PARAMETERS:
+    The class does not have parameters.
 
-    METHODS of this class are:
-    __init__ (function);
-    choose_OS (function);
-    set_playing field (function);
-    set_row_col (function);
-    new_difficulty_level_window;
-    easy (function);
-    normal (function);
-    hard (function);
+    METHODS:
+        __init__ (self);
+        choose_OS (function);
+        set_playing field (function);
+        set_row_col (function);
+        new_difficulty_level_window (function);
+        easy (function);
+        normal (function);
+        hard (function);
 
-    LIMITATIONS of this class are:
+    LIMITATIONS:
         1.  Other OS are not represented. We do not know how the GUI looks
             in other OS than MacOS and Windows.
         2. The selection of the difficulty and playing field size has to be done manually
            and is not automatically detected.
         3. The selection of the difficulty has to be done after every game. The settings are not saved.
 
-    STRUCTURES are not used in this class.
+    STRUCTURES:
+    are not used in this class.
 
-    OUTPUT of this class is a window in which the user can choose the
-        preferred OS version, the size of the playing field, and the
+    OUTPUT:
+        a window in which the user can choose the preferred OS version,
+        the size of the playing field, and the
         difficulty of the game. The window is closed when the player has
         made her/his selection.
     """
 
     def __init__(self):
         """
-        Initialises the class attributes:
-            self.title, self.geometry, and self.resizable assign some
-            basic functions to the game setup starting screen.
-
-            self.ROWS and self.COLUMNS is the attributes that contains the
-            value for the size of the board. The initial setting is 13 for both, which is the
-            size for the medium playing field.
-
-            self.OS contains the value for the OS version. The initial
-            setting is Windows. This value is based on the behavior of the right mouse click in either windows or apple.
+        DESCRIPTION:
+            Initialises the class attributes.
+            self.title, self.geometry, and self.resizable are tkinter options that are set to our liking.
+            self.ROWS and self.COLUMNS are the attributes that contains the size of the board.
+            self.OS contains the value for the OS version. This value is added to account for the fact that macOS and
+            windows have different right mouse buttons.
         """
+
         tk.Tk.__init__(self)
         self.title('Minesweeper')
         self.geometry("300x225")
@@ -76,16 +77,17 @@ class StartScreen(tk.Tk):
         self.set_playfield()
         self.set_row_col()
 
-        self.NUMBER_OF_MINES = int(self.ROWS.get()) * int(self.COLUMNS.get()) // 4
-        self.SAFE_RADIUS = 2
         self.new_difficulty_level_window()
 
     def choose_OS(self):
         """
-        Makes radio buttons which allows the player to choose between
-        a MacOS or Windows version. The function changes the self.OS
-        attribute of the class.
+        DESCRIPTION:
+            Makes radio buttons which allow the player to choose between
+            a macOS or Windows version. The function changes the self.OS
+            attribute of the class.
+
         """
+
         OS_frame = tk.Frame(self)
         OS_frame.pack(pady=20)
 
@@ -100,10 +102,12 @@ class StartScreen(tk.Tk):
 
     def set_playfield(self):
         """
-        Makes radio buttons which allows the player to choose the size of
-        the playfield (small(10x10)/medium(13x13)/large(16x16)). The
-        selection changes the attributes of the class.
+        DESCRIPTION:
+            Makes radio buttons which allow the player to choose the size of
+            the playing field (small(10x10)/medium(13x13)/large(16x16)). The
+            selection changes the attributes of the class.
         """
+
         play_frame = tk.Frame(self)
         play_frame.pack()
 
@@ -121,20 +125,24 @@ class StartScreen(tk.Tk):
 
     def set_row_col(self):
         """
-        Changes the ROWS and COLUMNS attribute of the class, based on the
-        selection the player made for the size of the playfield with the
-        radio buttons generated by the set_playfield function.
+        DESCRIPTION:
+            Changes the ROWS and COLUMNS attribute of the class, based on the
+            selection the player made for the size of the playing field with the
+            radio buttons generated by the set_playing field function.
         """
+
         self.ROWS = self.playfield
         self.COLUMNS = self.playfield
 
     def new_difficulty_level_window(self):
         """
-        Creates the buttons with which the player can set the difficulty
-        for the game (easy/normal/hard). Clicking the button initialises
-        the creation of the board based on the settings the player selected.
-        Either the function easy, normal or hard is called.
+        DESCRIPTION:
+            Creates the buttons with which the player can set the difficulty
+            for the game (easy/normal/hard). Clicking the button initialises
+            the creation of the board based on the settings the player selected.
+            Either the function easy, normal or hard is called.
         """
+
         button_frame = tk.Frame(self)
         button_frame.pack(pady=20)
 
@@ -152,11 +160,13 @@ class StartScreen(tk.Tk):
 
     def easy(self):
         """
-        Initialised when the player presses the easy button generated in
-        the new_difficulty_level_window function. The starting screen is
-        killed and a new minesweeper GUI is generated on easy settings
-        (low mine count, large safe radius).
+        DESCRIPTION:
+            Initialised when the player presses the easy button generated in
+            the new_difficulty_level_window function. The starting screen is
+            killed and a new minesweeper GUI is generated on easy settings
+            (low mine count, large safe radius).
         """
+
         app = App(int(self.ROWS.get()),
                   int(self.COLUMNS.get()),
                   int(self.ROWS.get()) * int(self.COLUMNS.get()) // 6,
@@ -167,11 +177,13 @@ class StartScreen(tk.Tk):
 
     def normal(self):
         """
-        Initialised when the player presses the normal button generated in
-        the new_difficulty_level_window function. The starting screen is
-        killed and a new minesweeper GUI is generated on normal settings
-        (medium mine count, large safe radius).
+        DESCRIPTION:
+            Initialised when the player presses the normal button generated in
+            the new_difficulty_level_window function. The starting screen is
+            killed and a new minesweeper GUI is generated on normal settings
+            (medium mine count, large safe radius).
         """
+
         app = App(int(self.ROWS.get()),
                   int(self.COLUMNS.get()),
                   int(self.ROWS.get()) * int(self.COLUMNS.get()) // 4,
@@ -182,11 +194,13 @@ class StartScreen(tk.Tk):
 
     def hard(self):
         """
-        Initialised when the player presses the hard button generated in
-        the new_difficulty_level_window function. The starting screen is
-        killed and a new minesweeper GUI is generated on hard settings
-        (high mine count, small safe radius).
+        DESCRIPTION:
+            Initialised when the player presses the hard button generated in
+            the new_difficulty_level_window function. The starting screen is
+            killed and a new minesweeper GUI is generated on hard settings
+            (high mine count, small safe radius).
         """
+
         app = App(int(self.ROWS.get()),
                   int(self.COLUMNS.get()),
                   int(self.ROWS.get()) * int(self.COLUMNS.get()) // 2,
