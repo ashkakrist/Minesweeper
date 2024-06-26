@@ -74,7 +74,8 @@ class App(tk.Tk):
     3.  The sound effects are only working on Windows computers.
 
     STRUCTURES:
-    The structures used are elaborated on in the methods themselves.
+    The structures used are elaborated on in the docstring of the methods
+    themselves where applicable.
 
     OUTPUT:
     GUI on which the minesweeper game can be played.
@@ -82,6 +83,7 @@ class App(tk.Tk):
 
     def __init__(self, rows, cols, mines, safe_radius, right_click=3):
         """
+        This method initialises the attributes of the class:
         self.title:     Gives the GUI a title.
         self.resizable: To make sure that the user cannot change the size of
                         the GUI.
@@ -141,7 +143,7 @@ class App(tk.Tk):
         that still need to be placed by the user to win the game.
 
         PARAMETERS:
-        None.
+        No additional parameters aside from the App attributes itself.
 
         STRUCTURES:
         A for-loop that iterates over all the tiles on the minesweeper board to
@@ -165,7 +167,7 @@ class App(tk.Tk):
         Function that ensures that the clock in the GUI is constantly updated.
 
         PARAMETERS:
-        None.
+        No additional parameters aside from the App attributes itself.
 
         STRUCTURES:
         If-statement that checks if ticking is still True. If the game is won,
@@ -188,10 +190,7 @@ class App(tk.Tk):
         with the message: "You won!"
 
         PARAMETERS:
-        None.
-
-        STRUCTURES:
-        None
+        No additional parameters aside from the App attributes itself.
 
         OUTPUT:
         A pop-up GUI that tells the uses that he/she has won the game. The
@@ -212,10 +211,7 @@ class App(tk.Tk):
         with the message: "You lost!"
 
         PARAMETERS:
-        None.
-
-        STRUCTURES:
-        None.
+        No additional parameters aside from the App attributes itself.
 
         OUTPUT:
         A pop-up GUI that tells the uses that he/she has lost the game. The
@@ -240,9 +236,6 @@ class App(tk.Tk):
         PARAMETERS:
         message:    a string variable that is defined in the function win or
                     lost.
-
-        STRUCTURES:
-        None.
 
         OUTPUT:
         A pop-up GUI that tells the user that he/she has won or lost the game.
@@ -279,9 +272,6 @@ class App(tk.Tk):
         popup:  the pop-up that is shown to the user. It is needed by the \
                 function so it is able to destroy it.
 
-        STRUCTURES:
-        None
-
         OUTPUT:
         A new minesweeper game.
         """
@@ -299,9 +289,6 @@ class App(tk.Tk):
         PARAMETERS:
         popup:  the pop-up that is shown to the user. It is needed by the
                 function so it is able to destroy it.
-
-        STRUCTURES:
-        None.
 
         OUTPUT:
         None.
@@ -353,9 +340,6 @@ class App(tk.Tk):
         row(int):   The row coordinate of the button.
         col(int):   The column coordinate of the button.
 
-        STRUCTURES:
-        None.
-
         OUTPUT:
         An updated app with at least one extra revealed button.
         """
@@ -373,9 +357,6 @@ class App(tk.Tk):
         PARAMETERS:
         row(int):   The row coordinate of the button
         col(int):   The column coordinate of the button
-
-        STRUCTURES:
-        None.
 
         OUTPUT:
         An updated App GUI with that shows a flag on the button that was
@@ -396,7 +377,7 @@ class App(tk.Tk):
         interact with an already revealed tile.
 
         PARAMETERS:
-        None.
+        No additional parameters aside from the App attributes itself.
 
         STRUCTURES:
         2 for loops:        To go through each tile in the playing field.

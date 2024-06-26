@@ -54,7 +54,8 @@ class MineSweeper:
                                 board.
 
     STRUCTURES:
-    The structures used are elaborated on in the methods own docstrings.
+    The structures used are elaborated on in the docstring of the methods
+    themselves where applicable.
 
     OUTPUTS:
     The MineSweeper object.
@@ -156,8 +157,7 @@ class MineSweeper:
         This method creates a board of empty tiles.
 
         PARAMETERS:
-        No additional parameters aside from the MineSweeper object itself.
-        itself.
+        No additional parameters aside from the MineSweeper attributes itself.
 
         STRUCTURES:
         Embedded for-loop:  Used to go through all row/column coordinates on the
@@ -264,8 +264,7 @@ class MineSweeper:
         Reveals a specified tile.
 
         PARAMETERS:
-        This method has no input parameters, aside from the MineSweeper object
-        itself.
+        No additional parameters aside from the MineSweeper attributes itself.
 
         STRUCTURES:
         For-loop:       Used to go through all tiles.
@@ -312,8 +311,7 @@ class MineSweeper:
         Checks if the game is over and whether the player has won or lost.
 
         PARAMETERS:
-        This method has no input parameters, aside from the MineSweeper object
-        itself.
+        No additional parameters aside from the MineSweeper attributes itself.
 
         STRUCTURES:
         For-loop:       Used to go through all tiles.
@@ -365,11 +363,7 @@ class MineSweeper:
         Looping over the MineSweeper goes through each tile on the board.
 
         PARAMETERS:
-        This method has no input parameters, aside from the MineSweeper object
-        itself.
-
-        STRUCTURES:
-        This method does not contain any significant structures.
+        No additional parameters aside from the MineSweeper attributes itself.
 
         OUTPUTS:
         The MineSweeper object with attribute n set to 0.
@@ -384,8 +378,7 @@ class MineSweeper:
         This method returns the tile at the current point of iteration.
 
         PARAMETERS:
-        This method has no input parameters, aside from the MineSweeper object
-        itself.
+        No additional parameters aside from the MineSweeper attributes itself.
 
         STRUCTURES:
         If-statement:   Used to check if the current point of iteration is
@@ -419,8 +412,7 @@ class MineSweeper:
         Returns string representation of the MineSweeper board.
 
         PARAMETERS:
-        This method has no input parameters, aside from the MineSweeper object
-        itself.
+        No additional parameters aside from the MineSweeper attributes itself.
 
         STRUCTURES:
         For-loop:   Used to go through all rows of the board.
@@ -474,7 +466,7 @@ class Tile:
         Determines the string representation of the tile.
 
         PARAMETERS:
-        This method has no input parameters, aside from the Tile object itself.
+        No additional parameters aside from the Tile attributes itself.
 
         STRUCTURES:
         If-statement:   Used to check if the tile is revealed.
