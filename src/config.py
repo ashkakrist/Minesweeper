@@ -10,7 +10,8 @@ of the board.
 
 ADDITIONAL PACKAGES:
 tkinter:    A python library used to create the GUI.
-app:        A module that creates the GUI for the minesweeper game.
+winsound:   A built in module on Windows that can be used to play sounds.
+app:        A module made to create the GUI for the minesweeper game.
 """
 
 import tkinter as tk
@@ -46,8 +47,8 @@ class StartScreen(tk.Tk):
         settings are not saved.
 
     STRUCTURES:
-    Not used in this class and thus not further elaborated in the docstring of
-    the method description.
+    The structures used are elaborated on in the docstring of the methods
+    themselves where applicable.
 
     OUTPUT:
     A window in which the user can choose the preferred OS version, the size of
@@ -68,6 +69,10 @@ class StartScreen(tk.Tk):
         self.OS contains the value for the OS version. This value is added to
         account for the fact that macOS and windows have different right mouse
         buttons.
+
+        STRUCTURES:
+        If-statement:   Used to import the package "winsound" if the Windows OS
+                        is selected by the user.
         """
 
         tk.Tk.__init__(self)
