@@ -14,7 +14,6 @@ winsound:   A built in module on Windows that can be used to play sounds.
 import tkinter as tk
 import src.engine as engine
 import src.config as cfg
-import winsound
 
 
 class App(tk.Tk):

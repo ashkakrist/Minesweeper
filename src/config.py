@@ -86,6 +86,9 @@ class StartScreen(tk.Tk):
 
         self.new_difficulty_level_window()
 
+        if self.OS == 3:
+            import winsound
+
     def choose_OS(self):
         """
         DESCRIPTION:
