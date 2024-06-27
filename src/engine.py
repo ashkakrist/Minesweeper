@@ -31,6 +31,7 @@ class MineSweeper:
     1.  The randomly generated games can not always be solved without guessing.
     2.  Tiles that are flagged are not revealed when the reveal method will
         recurse around empty tiles.
+    3.  Width of the board changes when an entire column is revealed.
 
     METHODS:
     self.__init__(n_rows: int, n_cols: int, n_mines: int, safe_radius):
@@ -443,8 +444,8 @@ class Tile:
     col (int):      Horizontal position of the tile.
 
     LIMITATIONS:
-    There is no way to tell the flagged status of a revealed tile from the string
-    representation.
+    1.  There is no way to tell the flagged status of a revealed tile from the string
+        representation.
 
     METHODS:
     self.__repr__():    Determines and returns the string representation for the

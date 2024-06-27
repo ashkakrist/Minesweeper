@@ -107,7 +107,7 @@ class App(tk.Tk):
 
         tk.Tk.__init__(self)
         self.title('Minesweeper')
-        self.resizable(False, False)  # Doesn't work with Mac? Some of the columns are outside the window.
+        self.resizable(False, False)
         self.board = engine.MineSweeper(rows, cols, mines, safe_radius)
         self.rows = rows
         self.cols = cols

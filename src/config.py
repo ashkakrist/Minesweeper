@@ -32,14 +32,13 @@ class StartScreen(tk.Tk):
     The class does not have parameters.
 
     METHODS:
-    __init__ (self);
-    choose_OS (function);
-    set_playing field (function);
-    set_row_col (function);
-    new_difficulty_level_window (function);
-    easy (function);
-    normal (function);
-    hard (function);
+    __init__(self):                 Initialises the class.
+    choose_OS(self):                Let the player choose MacOS or Windows OS.
+    set_playfield(self):            Let the player choose the size of the field.
+    new_difficulty_level_window(self):  Let the player set difficulty level.
+    easy(self):                     Initialises a game in easy mode.
+    normal(self):                   Initialises a game in normal mode.
+    hard(self):                     Initialises a game in hard mode.
 
     LIMITATIONS:
     1.  Other OS are not represented. We do not know how the GUI looks in other
@@ -62,16 +61,19 @@ class StartScreen(tk.Tk):
     def __init__(self):
         """
         DESCRIPTION:
-        This method initialises the class attributes.
-        self.title, self.geometry, and self.resizable are tkinter options that
-        are set to our liking.
-
-        self.ROWS and self.COLUMNS are the attributes that contains the size of
-        the board.
-
-        self.OS contains the value for the OS version. This value is added to
-        account for the fact that macOS and windows have different right mouse
-        buttons.
+        This method initialises the class attributes:
+        self.title:     Gives the GUI a title.
+        self.resizable: Makes sure the user cannot change the window size of the
+                        GUI start-screen.
+        self.geometry:  Sets the size of the window.
+        self.ROWS:      The number of rows on the board
+        self.COLUMNS:   The number of columns on the board.
+        self.OS:        Contains the value for the OS version. This value is
+                        added to account for the fact that macOS and windows
+                        uses different settings for the right mouse button.
+        self.playfield: Contains the initial value for the size of the playing
+                        field. The initial value is 13 which corresponds to the
+                        "medium" size playing field.
 
         STRUCTURES:
         If-statement:   Used to import the package "winsound" if the Windows OS
@@ -80,15 +82,13 @@ class StartScreen(tk.Tk):
 
         tk.Tk.__init__(self)
         self.title('Minesweeper')
-        self.geometry("300x225")
         self.resizable(False, False)
+        self.geometry("300x225")
         self.ROWS = tk.IntVar()
         self.COLUMNS = tk.IntVar()
 
         self.OS = tk.IntVar(value=3)
         self.choose_OS()
-        if self.OS == 3:
-            import winsound
 
         self.playfield = tk.IntVar(value=13)
         self.set_playfield()
@@ -103,6 +103,10 @@ class StartScreen(tk.Tk):
 
         PARAMETERS:
         No additional parameters aside from the StartScreen attributes itself.
+
+        OUTPUT:
+        Two radio buttons in the start-screen window which allows the player to
+        choose between the MacOS or Windows version.
         """
 
         OS_frame = tk.Frame(self)
@@ -129,6 +133,10 @@ class StartScreen(tk.Tk):
 
         PARAMETERS:
         No additional parameters aside from the StartScreen attributes itself.
+
+        OUTPUT:
+        Three radio buttons in the start-screen window which allows the player
+        to choose between a small, medium, or large playing field.
         """
 
         play_frame = tk.Frame(self)
@@ -165,6 +173,10 @@ class StartScreen(tk.Tk):
 
         PARAMETERS:
         No additional parameters aside from the StartScreen attributes itself.
+
+        OUTPUT:
+        Three buttons in the start-screen window which allows the player to
+        choose between the easy, normal, or hard game mode.
         """
 
         button_frame = tk.Frame(self)
@@ -192,6 +204,10 @@ class StartScreen(tk.Tk):
 
         PARAMETERS:
         No additional parameters aside from the StartScreen attributes itself.
+
+        OUTPUT:
+        If the button "easy" is clicked, this initialises a screen fitting the
+        easy mode settings, as well as the other settings chosen by the player.
         """
 
         app = App(self.playfield.get(),
@@ -212,6 +228,11 @@ class StartScreen(tk.Tk):
 
         PARAMETERS:
         No additional parameters aside from the StartScreen attributes itself.
+
+        OUTPUT:
+        If the button "normal" is clicked, this initialises a screen fitting
+        the normal mode settings, as well as the other settings chosen by the
+        player.
         """
 
         app = App(self.playfield.get(),
@@ -232,6 +253,10 @@ class StartScreen(tk.Tk):
 
         PARAMETERS:
         No additional parameters aside from the StartScreen attributes itself.
+
+        OUTPUT:
+        If the button "hard" is clicked, this initialises a screen fitting the
+        hard mode settings, as well as the other settings chosen by the player.
         """
 
         app = App(self.playfield.get(),
