@@ -446,6 +446,7 @@ class Tile:
     LIMITATIONS:
     1.  There is no way to tell the flagged status of a revealed tile from the string
         representation.
+    2.
 
     METHODS:
     self.__repr__():    Determines and returns the string representation for the
