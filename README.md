@@ -2,7 +2,6 @@
 
 # Minesweeper #
 #### Group 4, INF-52806 ####
-
 Minesweeper is a game where the player must clear the minefield by placing flags on mines.
 
 ### Instructions: ###
@@ -32,4 +31,4 @@ Amount of mines is set to be the total amount of tiles divided by 2
 ### Additional python packages: ###
 random\
 tkinter\
-winsound\
+winsound
