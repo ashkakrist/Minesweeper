@@ -10,7 +10,6 @@ of the board.
 
 ADDITIONAL PACKAGES:
 tkinter:    A python library used to create the GUI.
-winsound:   A built in module on Windows that can be used to play sounds.
 app:        A module made to create the GUI for the minesweeper game.
 """
 

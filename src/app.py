@@ -5,6 +5,7 @@ playing field.
 
 ADDITIONAL PACKAGES:
 tkinter:    A python library used to create the GUI
+winsound:   A build in module on Windows that can be used to play sounds.
 config:     A module made to create a GUI that allows the user to choose
             game options
 engine:     A module made to run the minesweeper game
