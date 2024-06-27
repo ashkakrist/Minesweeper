@@ -7,7 +7,7 @@ Minesweeper is a game where the player must clear the minefield by placing flags
 
 ### Instructions: ###
 
-* Start a new game by running the main.py file or the main.exe executable in the dist folder in the repository.
+* Start a new game by running the main.py file.
 * Select the preferred board size and difficulty.
 * Left click on the board to reveal a tile and right click on a tile to flag it.
 * If a tile displays a number n, this means that there are n mines adjacent to the numbered tile.
