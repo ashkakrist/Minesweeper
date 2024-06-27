@@ -28,3 +28,8 @@ Amount of mines is set to be the total amount of tiles divided by 4\
 *Hard*\
 Safe radius of 1 tile at start.\
 Amount of mines is set to be the total amount of tiles divided by 2
+
+### Additional python packages: ###
+random\
+tkinter\
+winsound\
