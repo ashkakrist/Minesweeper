@@ -35,7 +35,7 @@ class StartScreen(tk.Tk):
     __init__(self):                 Initialises the class.
     choose_OS(self):                Let the player choose MacOS or Windows OS.
     set_playfield(self):            Let the player choose the size of the field.
-    new_difficulty_level_window(self):  Let the player set difficulty level.
+    set_difficulty(self):  Let the player set difficulty level.
     easy(self):                     Initialises a game in easy mode.
     normal(self):                   Initialises a game in normal mode.
     hard(self):                     Initialises a game in hard mode.
@@ -49,8 +49,7 @@ class StartScreen(tk.Tk):
         settings are not saved.
 
     STRUCTURES:
-    The structures used are elaborated on in the docstring of the methods
-    themselves where applicable.
+    No structures are used in this class.
 
     OUTPUT:
     A window in which the user can choose the preferred OS version, the size of
@@ -71,13 +70,19 @@ class StartScreen(tk.Tk):
         self.OS:        Contains the value for the OS version. This value is
                         added to account for the fact that macOS and windows
                         uses different settings for the right mouse button.
+        self.choose_OS():   Initiates the function that creates radio buttons on
+                        the start-screen which lets the player choose the
+                        preferred OS; MacOS or Windows.
         self.playfield: Contains the initial value for the size of the playing
                         field. The initial value is 13 which corresponds to the
                         "medium" size playing field.
-
-        STRUCTURES:
-        If-statement:   Used to import the package "winsound" if the Windows OS
-                        is selected by the user.
+        self.set_playfield():   Initiates the function that creates the radio
+                        buttons on the start-screen which lets the player choose
+                        the preferred size of the playing field; S/M/L.
+        self.set_difficulty(): Initiates the function that creates the buttons
+                        on the start-screen which lets te player choose the
+                        game mode; easy, normal, or hard. Clicking the button
+                        of the preferred difficulty starts the game.
         """
 
         tk.Tk.__init__(self)
@@ -93,7 +98,7 @@ class StartScreen(tk.Tk):
         self.playfield = tk.IntVar(value=13)
         self.set_playfield()
 
-        self.new_difficulty_level_window()
+        self.set_difficulty()
 
     def choose_OS(self):
         """
@@ -105,7 +110,7 @@ class StartScreen(tk.Tk):
         No additional parameters aside from the StartScreen attributes itself.
 
         OUTPUT:
-        Two radio buttons in the start-screen window which allows the player to
+        Two radio buttons on the start-screen window which allows the player to
         choose between the MacOS or Windows version.
         """
 
@@ -135,7 +140,7 @@ class StartScreen(tk.Tk):
         No additional parameters aside from the StartScreen attributes itself.
 
         OUTPUT:
-        Three radio buttons in the start-screen window which allows the player
+        Three radio buttons on the start-screen window which allows the player
         to choose between a small, medium, or large playing field.
         """
 
@@ -163,7 +168,7 @@ class StartScreen(tk.Tk):
                                  value=16)
         rad_mac.grid(row=1, column=2)
 
-    def new_difficulty_level_window(self):
+    def set_difficulty(self):
         """
         DESCRIPTION:
         Creates the buttons with which the player can set the difficulty for
@@ -175,7 +180,7 @@ class StartScreen(tk.Tk):
         No additional parameters aside from the StartScreen attributes itself.
 
         OUTPUT:
-        Three buttons in the start-screen window which allows the player to
+        Three buttons on the start-screen window which allows the player to
         choose between the easy, normal, or hard game mode.
         """
 
