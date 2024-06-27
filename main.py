@@ -6,6 +6,7 @@ ADDITIONAL PACKAGES:
 config:     A module made to create a GUI that allows the user to choose
             game options
 """
+
 from src.config import StartScreen
 
 
