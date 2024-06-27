@@ -444,9 +444,10 @@ class Tile:
     col (int):      Horizontal position of the tile.
 
     LIMITATIONS:
-    1.  There is no way to tell the flagged status of a revealed tile from the string
-        representation.
-    2.
+    1.  There is no way to tell the flagged status of a revealed tile from the
+        string representation.
+    2.  [The class is very small and has no second limitation that we could
+        think of.]
 
     METHODS:
     self.__repr__():    Determines and returns the string representation for the
