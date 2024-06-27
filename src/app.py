@@ -203,7 +203,8 @@ class App(tk.Tk):
         self.show_popup("You won!")
         if self.OS == 3:
             import winsound
-            winsound.PlaySound('assets\\winning.wav', winsound.SND_FILENAME | winsound.SND_ASYNC)
+            winsound.PlaySound('assets\\winning.wav',
+                               winsound.SND_FILENAME | winsound.SND_ASYNC)
 
     def loss(self):
         """
@@ -224,7 +225,8 @@ class App(tk.Tk):
         self.show_popup("You lost!")
         if self.OS == 3:
             import winsound
-            winsound.PlaySound('assets\\explosion.wav', winsound.SND_FILENAME | winsound.SND_ASYNC)
+            winsound.PlaySound('assets\\explosion.wav',
+                               winsound.SND_FILENAME | winsound.SND_ASYNC)
 
     def show_popup(self, message):
         """
@@ -392,7 +394,8 @@ class App(tk.Tk):
 
         for r in range(self.rows):
             for c in range(self.cols):
-                self.buttons[r][c].config(text=self.board.board[r][c].__repr__())
+                self.buttons[r][c].config(
+                    text=self.board.board[r][c].__repr__())
                 if self.board.board[r][c].__repr__() == '$':
                     self.buttons[r][c].grid_remove()
                 if self.board.board[r][c].__repr__().isdigit():
